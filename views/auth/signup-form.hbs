@@ -24,13 +24,18 @@
         <input type="text" name="avatar">
     </div>
     <div>
-        <label for="">Longitud</label>
-        <input type="text" name="long">
+        <label for="">Adress</label>
+        <input type="text" name="adress">
     </div>
     <div>
-        <label for="">Lattitude</label>
-        <input type="text" name="lat">
+        <input id="lng" type="text" name="lng">
+        <input id="lat" type="text" name="lat">
     </div>
 
     <button type="submit">Create</button>
 </form>
+
+<script src="./../../js/script.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2IMfj2HtEYoAk4dVw3gvL1U39t2ftXg4&libraries=places&callback=initAutocomplete"
+    async defer></script>

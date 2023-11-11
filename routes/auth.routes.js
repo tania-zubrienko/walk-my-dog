@@ -15,11 +15,12 @@ router.get('/signup', (req, res, next) => {
     res.render('auth/signup-form')
 })
 router.post('/signup', (req, res, next) => {
-    const { name, email, password, username, description, avatar, long, lat } = req.body
+    const { name, email, password, username, description, avatar, lng, lat } = req.body
+    const adress = { type: "Point", coordinates: [lat, lng] }
     bcrypt
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(password, salt))
-        .then(hashedPwd => User.create({ name, email, username, description, avatar, password: hashedPwd }))
+        .then(hashedPwd => User.create({ name, email, username, description, adress, avatar, password: hashedPwd }))
         .then(newUser => {
             const { id: userId } = newUser
             return User
