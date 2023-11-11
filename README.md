@@ -218,5 +218,19 @@
       <td></td>
       <td>✔️</td>
     </tr>
+    <tr>
+      <th>POST</th>
+      <td><code>/perfil/reservas/acceptar/:id</code></td>
+      <td>Aceptar reserva (handler)</td>
+      <td></td>
+      <td>✔️</td>
+    </tr>
+    <tr>
+      <th>POST</th>
+      <td><code>/perfil/reservas/cancelar/:id</code></td>
+      <td>Cancelar reserva (handler)</td>
+      <td></td>
+      <td>✔️</td>
+    </tr>
   </tbody>
 </table>

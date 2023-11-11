@@ -1,0 +1,7 @@
+//isLogged
+
+//isOwner
+
+//isAdmin
+
+//isCarer ¿?
