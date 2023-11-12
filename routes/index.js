@@ -12,7 +12,7 @@ module.exports = app => {
     app.use("/", carersRoutes)
 
     const profileRoutes = require("./profile.routes")
-    app.use("/profile", profileRoutes)
+    app.use("/perfil", profileRoutes)
 
     //googlemaps api ¿?
 }

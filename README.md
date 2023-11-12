@@ -192,7 +192,7 @@
     </tr>
     <tr>
       <th>GET</th>
-      <td><code>/perfil/reservas</code></td>
+      <td><code>/perfil/:id/reservas</code></td>
       <td>Listado de reservas</td>
       <td></td>
       <td>✔️</td>

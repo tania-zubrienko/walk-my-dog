@@ -1,0 +1,29 @@
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Descripción</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each all}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{role}}</td>
+                <td>{{description}}</td>
+                <td><a href="/perfil/{{id}}/reservas">Ver reservas</a></td>
+                <td><a href="/perfil/editar/{{id}}">Editar</a></td>
+                <td><a href="/perfil/eliminar/{{id}}">Eliminar</a></td>
+                {{/each}}
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

@@ -1,64 +1,49 @@
-<form action="/signup" method="post">
-    <div>
-        <label for="">name</label>
-        <input type="text" name="name">
-    </div>
-    <div>
-        <label for="">email</label>
-        <input type="text" name="email">
-    </div>
-    <div>
-        <label for="">password</label>
-        <input type="text" name="password">
-    </div>
-    <div>
-        <label for="">username</label>
-        <input type="text" name="username">
-    </div>
-    <div>
-        <label for="">description</label>
-        <input type="text" name="description">
-    </div>
-    <div>
-        <label for="">Foto de perfil</label>
-        <input type="text" name="avatar">
-    </div>
-    <div>
-        <label for="">Adress</label>
-        <input type="text" name="adress">
-    </div>
-    <div>
-        <input id="lng" type="text" name="lng">
-        <input id="lat" type="text" name="lat">
-    </div>
+<div class="container">
+    <form action="/signup" method="post" class="mt-5">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre completo</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo electronico</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nombre de usuario</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" id="description" name="description">
+                </div>
+                <div class="mb-3">
+                    <label for="avatar">Foto de perfil</label>
+                    <input type="text" class="form-control" id="avatar" name="avatar">
+                </div>
+                <div class="mb-3">
+                    <label for="adress" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="adress" name="adress">
+                </div>
+                <div>
+                    <input id="lng" type="text" name="lng">
+                    <input id="lat" type="text" name="lat">
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-dark">Crear Perfil!</button>
+                </div>
 
-    <button type="submit">Create</button>
-</form>
+
+            </div>
+        </div>
+    </form>
+</div>
 
 <script src="./../../js/script.js"></script>
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBELJh4BpgqopdZkRIAycagEfb0RTDCbvs&libraries=places&callback=initAutocomplete"
+<script src="https://maps.googleapis.com/maps/api/js?key=__YOUR_API_KEY__&libraries=places&callback=initAutocomplete"
     async defer></script>
-
-
-<form>
-    <div class="mb-3">
-        <label for="username" class="form-label">Email address</label>
-        <input type="text" class="form-control" id="username" name="email">
-
-    </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" name="email">
-
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>

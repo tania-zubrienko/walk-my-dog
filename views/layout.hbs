@@ -27,8 +27,9 @@
    <body>
 
 
-      <nav class="nav navbar navbar-expand-lg navbar-light bg-light ">
+      <nav class="nav navbar navbar-expand-lg navbar-light bg-light mb-2">
          <div class="container-fluid">
+
             <img src="images/logo1-2.png" class="navbar-brand" href="#"></img>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,25 +39,27 @@
                <div class="navbar-nav">
                   <a class="nav-link" href="#">Servicios</a>
                   <a class="nav-link" href="#">Cuidadores</a>
+                  {{!-- {{#if ADMIN}} --}}
+                  <a class="nav-link" href="/listado-usuarios">Listado de usuarios</a>
+                  {{!-- {{/if}} --}}
                </div>
+            </div>
 
-               <div class="navbar-nav ml-auto">
-                  <div class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="images/holaaa.jpeg" alt="Imagen de Perfil" width="30" height="30"
-                           class="rounded-circle me-2  border border-white">
-                        Perfil
-                     </a>
-                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/signup">Sign up</a>
-                        <a class="dropdown-item" href="/login">Log in</a>
-                        <a class="dropdown-item" href="/logout">Cerrar sesión</a>
-                     </div>
+            <div class="navbar-nav d-none d-lg-block">
+               <div class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <img src="images/holaaa.jpeg" alt="Imagen de Perfil" width="30" height="30"
+                        class="rounded-circle me-2  border border-white">
+                     Perfil
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item" href="/signup">Sign up</a>
+                     <a class="dropdown-item" href="/login">Log in</a>
+                     <a class="dropdown-item" href="/logout">Cerrar sesión</a>
                   </div>
                </div>
             </div>
-         </div>
       </nav>
 
 

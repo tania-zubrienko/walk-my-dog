@@ -15,14 +15,14 @@ h2 h3 {
 }
 
 .navbar-brand {
-  width: 12%;
+  width: 120px;
 }
 
 .nav {
   background-color: #FFA69E !important;
 }
 
-/* #lng,
+#lng,
 #lat {
   display: none
-} */
+}
