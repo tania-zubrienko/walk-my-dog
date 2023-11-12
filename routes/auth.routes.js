@@ -44,7 +44,7 @@ router.post('/login', (req, res, next) => {
         .then(foundUser => {
             if (foundUser && bcrypt.compareSync(password, foundUser.password)) {
                 req.session.currentUser = foundUser
-                console.log(req.session.currentUser)
+                //console.log(req.session.currentUser)
                 res.redirect("/")
             }
             else {

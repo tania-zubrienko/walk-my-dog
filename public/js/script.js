@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function initAutocomplete() {
-  console.log("ENTRO EN COMPLETE")
+  //console.log("ENTRO EN COMPLETE")
 
   let input = document.querySelector('input[name="adress"]');
   let autocomplete = new google.maps.places.Autocomplete(input, {
@@ -14,9 +14,10 @@ function initAutocomplete() {
   });
 
   autocomplete.addListener('place_changed', function () {
-    console.log("ENTRO EN LISTENER")
+    //console.log("ENTRO EN LISTENER")
 
     let place = autocomplete.getPlace()
+    console.log(place)
     document.querySelector("#lng").value = place.geometry.location.lng()
     document.querySelector("#lat").value = place.geometry.location.lat()
   })

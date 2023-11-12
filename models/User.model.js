@@ -28,11 +28,9 @@ const userSchema = new Schema(
     adress: {
       type: {
         type: String,
-        //default: 'Point'//añadido default PARA TESTEAR----> eliminar despues
       },
       coordinates: {
         type: [Number],
-        //default: [40.42074848398311, -3.6858984521381646] //añadido default PARA TESTEAR----> eliminar despues
       }
     },
     description: {
@@ -40,7 +38,7 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
-      default: ""       //añadir imagen
+      //default: ""       
     },
     comment: [{
       type: Schema.Types.ObjectId,
@@ -56,7 +54,7 @@ const userSchema = new Schema(
       default: 'USER',
       enum: ['USER', 'CARER', 'ADMIN']
     },
-    owner: {                            //propiedad nueva para poder identificar propietario de la cuenta
+    owner: {
       type: Schema.Types.ObjectId,
       ref: "User"
     }

@@ -8,9 +8,11 @@
         <label for="">password</label>
         <input type="text" name="password">
     </div>
-    {{#if errorMessage}}
-    <p>{{errorMessage}}</p>
-    {{/if}}
+    <div>
+        {{#if errorMessage}}
+        <p>{{errorMessage}}</p>
+        {{/if}}
+    </div>
 
     <button type="submit">Submit</button>
     <div>
