@@ -11,11 +11,59 @@
 </head>
 
 <body>
+   <!DOCTYPE html>
+   <html lang="en">
 
-   {{{body}}}
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>{{title}}</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link rel="stylesheet" href="/stylesheets/style.css" />
+   </head>
 
-   <script src="/js/script.js"></script>
-   <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js'></script>
-</body>
+   <body>
 
-</html>
+
+      <nav class="nav navbar navbar-expand-lg navbar-light bg-light ">
+         <div class="container-fluid">
+            <img src="images/logo1-2.png" class="navbar-brand" href="#"></img>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+               aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+               <div class="navbar-nav">
+                  <a class="nav-link" href="#">Servicios</a>
+                  <a class="nav-link" href="#">Cuidadores</a>
+               </div>
+
+               <div class="navbar-nav ml-auto">
+                  <div class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="images/holaaa.jpeg" alt="Imagen de Perfil" width="30" height="30"
+                           class="rounded-circle me-2  border border-white">
+                        Perfil
+                     </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/signup">Sign up</a>
+                        <a class="dropdown-item" href="/login">Log in</a>
+                        <a class="dropdown-item" href="/logout">Cerrar sesión</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </nav>
+
+
+      {{{body}}}
+
+      <script src="/js/script.js"></script>
+      <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js'></script>
+   </body>
+
+   </html>
