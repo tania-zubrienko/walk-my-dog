@@ -1,14 +1,20 @@
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-3">
+    <div class="row justify-content-center mt-5">
+        <div class="col-3 avatar">
             <figure>
-                <img src="{{avatar}}" alt="{{name}}">
+                <img class="avatar" src="{{avatar}}" alt="{{name}}">
             </figure>
+            <div class="d-flex justify-content-between btns">
+                <button type="button" href="" class="btn mybutton ">Editar Perfil</button>
+                <button type="button" href="" class="btn mybutton">Eliminar Perfil</button>
+            </div>
         </div>
         <div class="col-6">
             <h2>{{name}}</h2>
+            <p class="tips">Email</p>
             <p>{{email}}</p>
             <hr>
+            <p class="tips">Sobre mi</p>
             <p>{{description}}</p>
         </div>
     </div>

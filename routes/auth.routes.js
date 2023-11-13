@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs")
 const saltRounds = 10
 
 const User = require("./../models/User.model")
-
+const uploaderMiddleware = require("./../middleware/uploader.middleware")
 
 
 
@@ -14,9 +14,11 @@ const User = require("./../models/User.model")
 router.get('/signup', (req, res, next) => {
     res.render('auth/signup-form')
 })
-router.post('/signup', (req, res, next) => {
-    const { name, email, password, username, description, avatar, lng, lat, role } = req.body
+router.post('/signup', uploaderMiddleware.single("avatar"), (req, res, next) => {
+    const { name, email, password, username, description, lng, lat, role } = req.body
     const address = { type: "Point", coordinates: [lat, lng] }
+    const { path: avatar } = req.file
+
     bcrypt
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(password, salt))
