@@ -1,2 +1,53 @@
-<h1>This is your booking form</h1>
-<p>holi</p>
+<div class="container">
+
+    <form action="/cuidadores/reservar/{{carer_id}}" method="POST" class="mt-5">
+        <div class="row justify-content-center">
+
+            <div class="col-6">
+                {{!-- <a class='go-back mb-3' href="/cuidadores/lista">Volver a cuidadores</a> --}}
+                <h3>Formulario de reserva</h3>
+                <div class=" row mb-3">
+                    <div class="col-6">
+                        <label for="dateStart" class="form-label">Fecha de inicio:</label>
+                        <input type="date" class="form-control" id="dateStart" name="dateStart">
+                    </div>
+                    <div class="col-6">
+                        <label for="dateFinish" class="form-label">Fecha de fin:</label>
+                        <input type="date" class="form-control" id="dateFinish" name="dateFinish">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" id="phone" name="phone">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="address" name="address">
+                </div>
+                <div class="mb-3">
+                    <label for="petType" class="form-label">Tipo de mascota</label>
+                    <input type="text" class="form-control" id="petType" name="petType">
+                </div>
+                <div class="mb-3">
+                    <label for="petNumber" class="form-label">Número de mascotas</label>
+                    <input type="number" class="form-control" id="petNumber" name="petNumber">
+                </div>
+                <div class="mb-3">
+                    <label for="bookingNotes" class="form-label">Notas</label>
+                    <textarea class="form-control" id="bookingNotes" rows="2" name="bookingNotes"></textarea>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn mybutton">Crear reserva</button>
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="./../../js/script.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBELJh4BpgqopdZkRIAycagEfb0RTDCbvs&libraries=places&callback=initAutocomplete"
+    async defer></script>
