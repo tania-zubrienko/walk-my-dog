@@ -20,6 +20,8 @@ h2 h3 {
 
 .nav {
   background-color: #FFA69E !important;
+  padding-left: 10px;
+  padding-right: 50px;
 }
 
 #lng,
@@ -47,11 +49,16 @@ h2 h3 {
 }
 
 #carerMap {
-  height: 500px;
-  width: 600px;
+  height: 400px;
+  width: 500px;
   background-color: aquamarine;
   position: fixed;
   border-radius: 15px;
+}
+
+.careerMap {
+  width: 550px;
+  height: 400px;
 }
 
 .tips {
