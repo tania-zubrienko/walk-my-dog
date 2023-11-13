@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require("./../models/User.model")
+const { isLoggedIn, isLoggedOut } = ('./')
 //GET listado
 router.get('/cuidadores-lista', (req, res) => {
     User
@@ -14,9 +15,17 @@ router.get('/cuidadores-lista', (req, res) => {
 })
 //GET detalles
 
-//GET hacer reserva
+router.get('/:carer_id', (req, res, next) => {
+    const { carer_id } = req.params
+    User
+        .findById({ carer_id })
+        .then(carer => res.render('booking/create-booking', carer))
+        .catch(err => console.log(err))
+
+})
 
 //POST hacer reserva
+
 
 //GET dejar comentario
 
