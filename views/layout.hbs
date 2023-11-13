@@ -35,13 +35,14 @@
                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                <div class="navbar-nav">
                   <a class="nav-link" href="/servicios">Servicios</a>
                   <a class="nav-link" href="/cuidadores-lista">Cuidadores</a>
-                  {{!-- {{#if ADMIN}} --}}
+                  {{!-- {{#if admin}}
                   <a class="nav-link" href="/listado-usuarios">Listado de usuarios</a>
-                  {{!-- {{/if}} --}}
+                  {{/if}} --}}
                </div>
             </div>
 
@@ -56,10 +57,13 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                      <a class="dropdown-item" href="/signup">Sign up</a>
                      <a class="dropdown-item" href="/login">Log in</a>
+                     <a class="dropdown-item" href="#">Mi perfil</a>
+                     <a class="dropdown-item" href="#">Mis reservas</a>
                      <a class="dropdown-item" href="/logout">Cerrar sesión</a>
                   </div>
                </div>
             </div>
+         </div>
       </nav>
 
 
