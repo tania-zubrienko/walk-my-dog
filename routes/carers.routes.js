@@ -1,13 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const User = require("./../models/User.model")
-const { isLoggedIn, isLoggedOut } = ('./')
+const Booking = require('./../models/Booking.model')
+const { isLoggedIn, isLoggedOut } = require('./../middleware/route-guard')
 //GET listado
-router.get('/cuidadores-lista', (req, res) => {
+router.get('/lista', (req, res) => {
     User
         .find({ role: 'CARER' })
         .then(users => {
-            res.render('users/carer-list.hbs', {
+            res.render('users/carer-list', {
                 users: users,
             })
         })
@@ -15,17 +16,32 @@ router.get('/cuidadores-lista', (req, res) => {
 })
 //GET detalles
 
-router.get('/:carer_id', (req, res, next) => {
+router.get('/:carer_id', isLoggedIn, (req, res, next) => {
     const { carer_id } = req.params
     User
-        .findById({ carer_id })
-        .then(carer => res.render('booking/create-booking', carer))
+        .findById(carer_id)
+        .then(carer => res.render('users/carer-details', carer))
         .catch(err => console.log(err))
 
 })
 
-//POST hacer reserva
+//GET hacer reserva
+router.get('/:carer_id/reservar', isLoggedIn, (req, res, next) => {
+    const { carer_id } = req.params
+    res.render('bookings/create-booking', { carer_id })
 
+
+})
+//POST hacer reserva
+router.post('/reservar/:carer_id', isLoggedIn, (req, res, next) => {
+    console.log("entroooooooo")
+    const { dateStart, dateFinish, phone, address, petType, petNumber, bookingNotes } = req.body
+    Booking
+        .create({ dateStart, dateFinish, phone, address, petType, petNumber, bookingNotes })
+        .then(booking => res.redirect('/cuidadores/lista'))
+        .catch(err => console.log(err))
+
+})
 
 //GET dejar comentario
 

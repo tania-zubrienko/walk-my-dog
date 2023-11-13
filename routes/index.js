@@ -9,7 +9,7 @@ module.exports = app => {
     app.use("/api", apiROutes)
 
     const carersRoutes = require("./carers.routes")
-    app.use("/", carersRoutes)
+    app.use("/cuidadores", carersRoutes)
 
     const profileRoutes = require("./profile.routes")
     app.use("/perfil", profileRoutes)
