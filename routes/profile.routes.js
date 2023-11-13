@@ -3,7 +3,7 @@ const router = express.Router()
 const User = require("./../models/User.model")
 const { isLoggedIn } = require('./../middleware/route-guard')
 const { checkOwner } = require('./../middleware/route-guard')
-
+const uploaderMiddleware = require("./../middleware/uploader.middleware")
 
 //GET Detalles del perfil
 router.get("/", isLoggedIn, (req, res, next) => {
@@ -23,14 +23,14 @@ router.get('/editar/:id', isLoggedIn, checkOwner, (req, res, next) => {
         .catch(err => next(err))
 })
 //POST Editar perfil
-router.post('/editar/:id', isLoggedIn, (req, res, next) => {
+router.post('/editar/:id', isLoggedIn, uploaderMiddleware.single("avatar"), (req, res, next) => {
+
     const { _id: userId } = req.session.currentUser
     const { name, email, username, description } = req.body
     User
         .findByIdAndUpdate(userId, { name, email, username, description })
         .then(() => res.redirect("/perfil"))
         .catch(err => next(err))
-
 })
 
 //POST Eliminar perfil

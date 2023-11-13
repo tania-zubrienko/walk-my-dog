@@ -67,7 +67,6 @@ h2 h3 {
 
 .avatar {
   width: 300px;
-  margin-right: 30px;
   border-radius: 15px;
 }
 
@@ -82,4 +81,10 @@ h2 h3 {
   height: 400px;
   width: 400px;
   background-color: aquamarine;
+}
+
+.myprofilecol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
