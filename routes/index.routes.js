@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require("./../models/User.model")
-const isAdmin = require("./../middleware/route-guard")
+const { isLoggedIn, isLoggedOut, checkRole } = require('../middleware/route-guard')
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -11,7 +11,7 @@ router.get("/", (req, res, next) => {
 });
 
 
-router.get("/listado-usuarios/", (req, res, next) => {
+router.get("/listado-usuarios/", isLoggedIn, checkRole, (req, res, next) => {
   User
     .find()
     .then(all => res.render("users/users-list", { all }))
