@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const User = require("./../models/User.model")
+
 const Booking = require('./../models/Booking.model')
 const { isLoggedIn, isLoggedOut } = require('./../middleware/route-guard')
+
 //GET listado
 router.get('/lista', (req, res) => {
     User
