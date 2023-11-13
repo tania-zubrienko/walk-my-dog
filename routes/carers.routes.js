@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require("./../models/User.model")
+
 //GET listado
 router.get('/cuidadores-lista', (req, res) => {
     User
