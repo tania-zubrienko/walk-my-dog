@@ -28,12 +28,15 @@ const checkRole = (req, res, next) => {
     if (role === 'ADMIN') {
         next()
     }
+    else {
+        res.redirect('/')
+    }
 }
 
 const checkOwner = (req, res, next) => {
 
     const currentID = req.session.currentUser
-    if (currentID._id == req.params.id) {
+    if (currentID._id == req.params.id || currentID.role === "ADMIN") {
         next()
     } else {
         res.redirect('/')

@@ -16,14 +16,16 @@ router.get("/", isLoggedIn, (req, res, next) => {
 
 //GET Editar perfil
 router.get('/editar/:id', isLoggedIn, checkOwner, (req, res, next) => {
-    const { _id: userId } = req.session.currentUser
+    const { id: userId } = req.params
+    console.log(req.params)
     User
         .findById(userId)
         .then(foundUser => res.render("profile/edit-profile", foundUser))
         .catch(err => next(err))
 })
+
 //POST Editar perfil
-router.post('/editar/:id', isLoggedIn, uploaderMiddleware.single("avatar"), (req, res, next) => {
+router.post('/editar/:id', isLoggedIn, checkOwner, uploaderMiddleware.single("avatar"), (req, res, next) => {
 
     const { _id: userId } = req.session.currentUser
     const { name, email, username, description } = req.body

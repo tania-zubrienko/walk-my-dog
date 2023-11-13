@@ -16,8 +16,8 @@ router.get('/lista', (req, res) => {
         })
         .catch(err => console.log(err))
 })
-//GET detalles
 
+//GET detalles
 router.get('/:carer_id', isLoggedIn, (req, res, next) => {
     const { carer_id } = req.params
     User
