@@ -30,9 +30,19 @@ const checkRole = (req, res, next) => {
     }
 }
 
+const checkOwner = (req, res, next) => {
+
+    const currentID = req.session.currentUser
+    if (currentID._id == req.params.id) {
+        next()
+    } else {
+        res.redirect('/')
+    }
+}
 
 module.exports = {
     isLoggedOut,
     isLoggedIn,
-    checkRole
+    checkRole,
+    checkOwner
 }

@@ -18,6 +18,7 @@ h2 h3 {
   width: 120px;
 }
 
+
 .nav {
   background-color: #FFA69E !important;
 }
@@ -63,6 +64,9 @@ h2 h3 {
   border-radius: 15px;
 }
 
-.btns {
-  margin: 0
+.hero {
+  width: 100vw;
+  height: 80vh;
+  background-color: #93e1d8;
+  text-align: center;
 }

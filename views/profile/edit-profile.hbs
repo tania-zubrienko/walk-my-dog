@@ -1,0 +1,39 @@
+<div class="container">
+    <form action="/perfil/editar/{{_id}}" method="post" class="mt-5">
+        <div class="row justify-content-around">
+            <div class="col-3">
+                <figure>
+                    <img class="avatar" src="{{avatar}}" alt="{{name}}">
+                </figure>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre completo</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{name}}">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo electronico</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{email}}">
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nombre de usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" value="{{username}}">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" id="description" name="description" value="{{description}}">
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn mybutton">Guardar cambios</button>
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="./../../js/script.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBELJh4BpgqopdZkRIAycagEfb0RTDCbvs&libraries=places&callback=initAutocomplete"
+    async defer></script>
