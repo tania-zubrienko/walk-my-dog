@@ -14,4 +14,9 @@ router.get("/listado-usuarios/", (req, res, next) => {
     .then(all => res.render("users/users-list", { all }))
     .catch(err => next(err))
 })
+
+router.get("/servicios", (req, res, next) => {
+  res.render("places/services-map")
+})
+
 module.exports = router;

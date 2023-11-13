@@ -16,17 +16,17 @@ router.get('/signup', (req, res, next) => {
 })
 router.post('/signup', (req, res, next) => {
     const { name, email, password, username, description, avatar, lng, lat } = req.body
-    const adress = { type: "Point", coordinates: [lat, lng] }
+    const address = { type: "Point", coordinates: [lat, lng] }
     bcrypt
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(password, salt))
-        .then(hashedPwd => User.create({ name, email, username, description, adress, avatar, password: hashedPwd }))
-        .then(newUser => {
-            const { id: userId } = newUser
-            return User
-                .findByIdAndUpdate(userId, { owner: userId })
-                .populate('owner')
-        })
+        .then(hashedPwd => User.create({ name, email, username, description, address, avatar, password: hashedPwd }))
+        // .then(newUser => {
+        //     const { id: userId } = newUser
+        //     return User
+        //         .findByIdAndUpdate(userId, { owner: userId })
+        //         .populate('owner')
+        // })
         .then(() => res.redirect('/'))
         .catch(err => next(err))
 })

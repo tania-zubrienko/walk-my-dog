@@ -26,3 +26,29 @@ h2 h3 {
 #lat {
   display: none
 }
+
+.mybutton {
+  background-color: #93e1d8;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.mybutton:hover {
+  background-color: #5bc0be;
+  color: white;
+
+}
+
+#serviceMap {
+  height: 300px;
+  width: 70vw;
+  background-color: aquamarine;
+}
+
+#carerMap {
+  height: 500px;
+  width: 600px;
+  background-color: aquamarine;
+  position: fixed;
+  border-radius: 15px;
+}

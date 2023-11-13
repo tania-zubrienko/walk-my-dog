@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const User = require("./User.model")
 const bookingSchema = new Schema(
   {
     owner: {
@@ -18,11 +17,11 @@ const bookingSchema = new Schema(
       type: Date,
       required: true
     },
-    tel: {
+    phone: {
       type: String, //aplicar regex
       required: true
     },
-    direction: {
+    address: {
       type: {
         type: String
       },
@@ -38,7 +37,7 @@ const bookingSchema = new Schema(
       type: Number,
       required: true
     },
-    comments: {
+    bookingNotes: {
       type: String,
     },
     status: {
@@ -51,6 +50,7 @@ const bookingSchema = new Schema(
     timestamps: true
   }
 );
+
 
 const Booking = model("Booking", bookingSchema);
 

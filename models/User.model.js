@@ -1,6 +1,4 @@
 const { Schema, model } = require("mongoose");
-const Booking = require("./Booking.model")
-const Comment = require("./Comment.model")
 const userSchema = new Schema(
   {
     username: {
@@ -25,7 +23,7 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    adress: {
+    address: {
       type: {
         type: String,
       },
@@ -40,29 +38,19 @@ const userSchema = new Schema(
       type: String,
       //default: ""       
     },
-    comment: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Comment'
-    }],
-    booking: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Booking'
-    }],
     role: {
       type: String,
       required: true,
       default: 'USER',
       enum: ['USER', 'CARER', 'ADMIN']
-    },
-    owner: {
-      type: Schema.Types.ObjectId,
-      ref: "User"
     }
   },
   {
     timestamps: true
   }
 );
+
+userSchema.index({ location: '2dsphere' })
 
 const User = model("User", userSchema);
 

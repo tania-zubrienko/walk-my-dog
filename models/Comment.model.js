@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const User = require("./User.model")
 
 const commentSchema = new Schema(
   {
@@ -11,14 +10,15 @@ const commentSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User"
     },
-    commentText: {
+    content: {
       type: String,
       required: true
     },
     rating: {
       type: Number,
       required: true,
-      enum: [1, 2, 3, 4, 5]
+      min: 1,
+      max: 5
     }
   },
   {
