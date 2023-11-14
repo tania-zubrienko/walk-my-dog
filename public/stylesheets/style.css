@@ -40,6 +40,32 @@ h2 h3 {
 
 }
 
+.mybutton2 {
+  background-color: #aa4465;
+  color: white;
+  transition: background-color 0.3s ease;
+  padding: .5rem 0;
+}
+
+.mybutton2:hover {
+  background-color: #7c3048;
+  color: white;
+
+}
+
+.mybutton3 {
+  background-color: #462255;
+  color: white;
+  transition: background-color 0.3s ease;
+  padding: .5rem 0;
+}
+
+.mybutton3:hover {
+  background-color: #361a42;
+  color: white;
+
+}
+
 #serviceMap {
   height: 300px;
   width: 70vw;
