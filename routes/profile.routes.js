@@ -58,18 +58,54 @@ router.get('/reservas', (req, res, next) => {
             .find({ carer: userId })
             .populate("owner")
             .then(bookings => {
-                res.render('bookings/booking-list', { bookings })
+                res.render('bookings/career-booking', { bookings })
             })
             .catch(err => next(err))
     }
     else {
-        res.send("VISTA DE CLIENTE")
+        Booking
+            .find({ owner: userId })
+            .populate("carer")
+            .then(bookings => {
+                res.render('bookings/user-booking', { bookings })
+            })
+            .catch(err => next(err))
+
     }
 })
 
-//GET Editar reservas (solo para propietario y admin)
+//GET Editar reservas 
+router.get("/reservas/editar/:id", (req, res, next) => {
+    const { id: idBooking } = req.params
+    Booking
+        .findById(idBooking)
+        .then(foundBooking => res.render("bookings/edit-booking", foundBooking))
+        .catch(err => next(err))
 
-//POST Editar reservas
+})
+
+//POST Editar reservas handler
+router.post("/reservas/editar/:id", (req, res, next) => {
+    const { id: idBooking } = req.params
+    const { dateStart, dateFinish, phone, petType, petNumber, bookingNotes, status } = req.body
+
+    console.log(req.body)
+    Booking
+        .findByIdAndUpdate(idBooking, { dateStart, dateFinish, phone, petType, petNumber, bookingNotes, status })
+        .then(foundBooking => res.redirect("/perfil/reservas"))
+        .catch(err => next(err))
+
+})
+
+//GET eliminar reservas
+router.post("/reservas/eliminar/:id", (req, res, next) => {
+    const { id: idBooking } = req.params
+    Booking
+        .findByIdAndDelete(idBooking)
+        .then(() => res.redirect("/perfil/reservas"))
+        .catch(err => next(err))
+})
+//POST Eliminar reserva (solo para propietario y admin)
 
 //POST Aceptar reserva (botón que cambia estado de la reserva PENDING / ACCEPTED / CANCLED)
 router.get('/reservas/accept/:id', (req, res, next) => {
@@ -80,7 +116,6 @@ router.get('/reservas/accept/:id', (req, res, next) => {
         .catch(err => next(err))
 })
 
-//POST Eliminar reserva (solo para propietario y admin)
 router.get('/reservas/cancel/:id', (req, res, next) => {
     const { id: idBooking } = req.params
     Booking
