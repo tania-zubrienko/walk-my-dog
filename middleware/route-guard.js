@@ -1,11 +1,3 @@
-//isLogged
-
-//isOwner
-
-//isAdmin
-
-//isCarer ¿?
-
 const isLoggedOut = (req, res, next) => {
     if (!req.session.currentUser) {
         next()
@@ -14,11 +6,11 @@ const isLoggedOut = (req, res, next) => {
     }
 
 }
-
 const isLoggedIn = (req, res, next) => {
     if (req.session.currentUser) {
         next()
-    } else {
+    }
+    else {
         res.redirect('/login')
     }
 }
@@ -43,9 +35,15 @@ const checkOwner = (req, res, next) => {
     }
 }
 
+const sessionStarted = (req, res, next) => {
+    console.log('SOY UN MIDDLEWARE DE BLOQUE JEJE')
+    next()
+}
+
 module.exports = {
     isLoggedOut,
     isLoggedIn,
     checkRole,
-    checkOwner
+    checkOwner,
+    sessionStarted
 }

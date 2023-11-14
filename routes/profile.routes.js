@@ -1,9 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const User = require("./../models/User.model")
+const Booking = require("./../models/Booking.model")
+
 const { isLoggedIn } = require('./../middleware/route-guard')
 const { checkOwner } = require('./../middleware/route-guard')
 const uploaderMiddleware = require("./../middleware/uploader.middleware")
+
+const formatDate = require('./../utils/capitalize')
 
 //GET Detalles del perfil
 router.get("/", isLoggedIn, (req, res, next) => {
@@ -44,9 +48,21 @@ router.get('/eliminar/:id', isLoggedIn, (req, res, next) => {
         .catch(err => next(err))
 
 })
+
 //GET Ver listado de reservas
-router.get('/:id/reservas', (req, res, next) => {
-    res.send("VER LISTADO DE RESERVAS")
+router.get('/reservas', (req, res, next) => {
+    const { _id: userId } = req.session.currentUser
+    Booking
+        .find({ carer: userId })
+        .populate("owner")
+        .then(bookings => {
+            console.log(bookings)
+            res.render('bookings/booking-list', { bookings })
+        })
+        .catch(err => next(err))
+
+
+    //res.render('bookings/booking-list')
 })
 
 //GET Editar reservas (solo para propietario y admin)

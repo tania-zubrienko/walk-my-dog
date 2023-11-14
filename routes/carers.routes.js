@@ -36,17 +36,20 @@ router.get('/:carer_id/reservar', isLoggedIn, (req, res, next) => {
 })
 //POST hacer reserva
 router.post('/reservar/:carer_id', isLoggedIn, (req, res, next) => {
-    console.log("entroooooooo")
+    const { carer_id: carer } = req.params
+    const { _id: owner } = req.session.currentUser
     const { dateStart, dateFinish, phone, address, petType, petNumber, bookingNotes } = req.body
     Booking
-        .create({ dateStart, dateFinish, phone, address, petType, petNumber, bookingNotes })
-        .then(booking => res.redirect('/cuidadores/lista'))
+        .create({ dateStart, dateFinish, phone, address, petType, petNumber, bookingNotes, carer, owner })
+        .then(booking => console.log(booking))
+        .then(() => res.redirect('/cuidadores/lista'))
+
         .catch(err => console.log(err))
 
 })
 
 //GET dejar comentario
-
+router.post('/dejar-comenario/:id')
 //POST dejar comentario
 
 //POST valorar

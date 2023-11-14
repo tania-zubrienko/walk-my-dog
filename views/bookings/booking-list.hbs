@@ -1,0 +1,35 @@
+<div class="container">
+    <h1>Listado de reservas</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Fechas</th>
+                <th scope="col">Nombre de cliente</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Tipo de mascota</th>
+                <th scope="col">Información addicional</th>
+                <th scope="col">Status</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{#each bookings}}
+            <tr>
+                <td>{{formatDate dateStart}} - {{formatDate dateFinish}}</td>
+                <td>{{owner.name}}</td>
+                <td>{{phone}}</td>
+                <td>{{petType}} ({{petNumber}})</td>
+                <td>{{notes}}</td>
+                <td>{{status}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" class="btn btn-sm btn-danger">Aceptar</button>
+                        <button type="button" class="btn btn-sm btn-success">Cancelar</button>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
