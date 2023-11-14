@@ -49,7 +49,8 @@ router.post('/reservar/:carer_id', isLoggedIn, (req, res, next) => {
 })
 
 //GET dejar comentario
-router.post('/dejar-comenario/:id')
+
+
 //POST dejar comentario
 
 //POST valorar

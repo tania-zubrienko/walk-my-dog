@@ -52,17 +52,19 @@ router.get('/eliminar/:id', isLoggedIn, (req, res, next) => {
 //GET Ver listado de reservas
 router.get('/reservas', (req, res, next) => {
     const { _id: userId } = req.session.currentUser
-    Booking
-        .find({ carer: userId })
-        .populate("owner")
-        .then(bookings => {
-            console.log(bookings)
-            res.render('bookings/booking-list', { bookings })
-        })
-        .catch(err => next(err))
-
-
-    //res.render('bookings/booking-list')
+    const { role } = req.session.currentUser
+    if (role === "CARER") {
+        Booking
+            .find({ carer: userId })
+            .populate("owner")
+            .then(bookings => {
+                res.render('bookings/booking-list', { bookings })
+            })
+            .catch(err => next(err))
+    }
+    else {
+        res.send("VISTA DE CLIENTE")
+    }
 })
 
 //GET Editar reservas (solo para propietario y admin)
@@ -70,7 +72,21 @@ router.get('/reservas', (req, res, next) => {
 //POST Editar reservas
 
 //POST Aceptar reserva (botón que cambia estado de la reserva PENDING / ACCEPTED / CANCLED)
+router.get('/reservas/accept/:id', (req, res, next) => {
+    const { id: idBooking } = req.params
+    Booking
+        .findByIdAndUpdate(idBooking, { status: "ACCEPTED" })
+        .then(() => res.redirect("/perfil/reservas"))
+        .catch(err => next(err))
+})
 
 //POST Eliminar reserva (solo para propietario y admin)
+router.get('/reservas/cancel/:id', (req, res, next) => {
+    const { id: idBooking } = req.params
+    Booking
+        .findByIdAndUpdate(idBooking, { status: "CANCELED" })
+        .then(() => res.redirect("/perfil/reservas"))
+        .catch(err => next(err))
+})
 
 module.exports = router

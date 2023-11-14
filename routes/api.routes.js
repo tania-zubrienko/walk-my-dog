@@ -12,4 +12,7 @@ router.get("/carers-location", (req, res, next) => {
 })
 //userlist GET
 
+
+
+// hacer una ruta generica que devuelve json de la bd para procesar posteriori en servicios ---> OUTPUT : JSON con todo 
 module.exports = router;

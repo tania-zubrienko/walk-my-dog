@@ -1,7 +1,7 @@
 require("dotenv").config()
 require("./db")
 const express = require("express")
-const { sessionStarted } = require('./middleware/route-guard')
+
 
 const hbs = require("hbs")
 hbs.handlebars.registerHelper('formatDate', (fecha) => {
@@ -16,10 +16,16 @@ require("./config")(app)
 const projectName = "Walk-my-Dog"
 
 app.locals.appTitle = `${projectName}`
-app.use(sessionStarted)
+
 
 require("./config/session.config")(app)
+
+const { sessionStarted } = require('./middleware/route-guard')
+app.use(sessionStarted)
+
 require("./routes")(app)
 require("./error-handling")(app)
+
+
 
 module.exports = app
