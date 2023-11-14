@@ -7,11 +7,12 @@ a {
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 20px;
 }
 
-h2 h3 {
-  font-size: .85rem;
+h2,
+h3 {
+  font-size: 17px;
 }
 
 .navbar-brand {
@@ -150,10 +151,18 @@ h2 h3 {
 
 #carerDetailMap {
   height: 40vh;
-  width: 24vw;
+  width: 100%;
   background-color: aquamarine;
+  border-radius: 10px;
+  border: 3px solid #93e1d8;
+
 }
 
 .details-carer {
   color: #361a42;
+}
+
+.button-coment {
+  position: sticky;
+  top: 100px;
 }
