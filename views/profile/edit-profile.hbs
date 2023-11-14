@@ -1,12 +1,20 @@
 <div class="container">
-    <form action="/perfil/editar/{{_id}}" method="post" class="mt-5">
-        <div class="row justify-content-around">
-            <div class="col-3">
-                <figure>
+    <div class="row justify-content-around">
+        <div class="col-4">
+            <div class="text-center">
+                <figure class="text-center ">
                     <img class="avatar" src="{{avatar}}" alt="{{name}}">
                 </figure>
+                <form action="/change-img" method="post" enctype="multipart/form-data">
+                    <input type="file" class="form-control" id="avatar" name="avatar">
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-sm mybutton">Actualizar mi foto</button>
+                    </div>
+                </form>
             </div>
-            <div class="col-6">
+        </div>
+        <div class="col-6 ">
+            <form action="/perfil/editar/{{_id}}" method="post" class="mt-5 myprofilecol">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nombre completo</label>
                     <input type="text" class="form-control" id="name" name="name" value="{{name}}">
@@ -23,14 +31,15 @@
                     <label for="description" class="form-label">Descripción</label>
                     <input type="text" class="form-control" id="description" name="description" value="{{description}}">
                 </div>
+
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn mybutton">Guardar cambios</button>
                 </div>
 
 
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 
 <script src="./../../js/script.js"></script>
