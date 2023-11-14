@@ -26,12 +26,12 @@ router.get("/servicios", (req, res, next) => {
 
 router.post("/change-img/", upload.single("avatar"), (req, res, next) => {
   if (req.file) {
-
-    const { _id } = req.session.currentUser
     const { path: avatar } = req.file
+    const { _id: userId } = req.session.currentUser
+    console.log(userId, avatar)
     User
-      .findByIdAndUpdate(_id, { avatar })
-      .then(() => res.redirect(`/perfil/${id}`))
+      .findByIdAndUpdate(userId, { avatar })
+      .then(() => res.redirect(`/perfil`))
       .catch(err => next(err))
 
   } else {

@@ -1,106 +1,116 @@
-// https://developer.mozilla.org/en-US/docs/Web/API/Window/DOMContentLoaded_event
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Walk-my-Dog JS imported successfully!");
 });
-
 let myMap
-const ironhackCoords = { lat: 40.392521370648154, lng: -3.6989879718518366 }
+let userLocation = { lat: 40.44699825339554, lng: -3.6751472005642563 }
 
+
+//Autocomplete of the address input
 function initAutocomplete() {
-  //console.log("ENTRO EN COMPLETE")
-
   let input = document.querySelector('input[name="address"]');
-  let autocomplete = new google.maps.places.Autocomplete(input, {
-    types: ['geocode'],
-    //componentRestrictions: { country: 'es' }
-  });
+  let autocomplete = new google.maps.places.Autocomplete(input, { types: ['geocode'] });
 
   autocomplete.addListener('place_changed', function () {
-    //console.log("ENTRO EN LISTENER")
-
     let place = autocomplete.getPlace()
-    console.log(place)
     document.querySelector("#lng").value = place.geometry.location.lng()
     document.querySelector("#lat").value = place.geometry.location.lat()
   })
 }
-let query
-vetsButton = () => {
-  console.log("presionado vets")
-  query = "clinica veterinaria"
-  initMap(query)
-}
-shopsButton = () => {
-  console.log("presionado shops")
-  query = "tiendas para mascotas"
-  initMap(query)
-}
-parksButton = () => {
-  console.log("presionado parks")
-  query = "pipican"
-  initMap(query)
-}
 
+
+
+//Showing locations acording to the button pressed
 const vButton = document.querySelector("#vets")
-vButton.addEventListener('click', vetsButton)
+vButton.addEventListener('click', () => assignQuery("clinica veterinaria"))
 
 const sButton = document.querySelector("#shops")
-sButton.addEventListener('click', shopsButton)
+sButton.addEventListener('click', () => assignQuery("tiendas para mascotas"))
 
 const pButton = document.querySelector("#parks")
-pButton.addEventListener('click', parksButton)
+pButton.addEventListener('click', () => assignQuery("pipican"))
+
+const assignQuery = (query) => initMap(query)
 
 
 
 
+//Methods to rednder map with carers
+const carersButton = document.querySelector("#carers")
+carersButton.addEventListener('click', () => renderCarersMap())
 
+function renderCarersMap() {
+  renderMap()
+  getCarersLocation()
+}
 
+function getCarersLocation() {
+  axios
+    .get("/api/carers-location")
+    .then(res => {
+      res.data.forEach(element => {
+        address = { lat: element.address.coordinates[0], lng: element.address.coordinates[1] }
+        console.log(address)
 
+        printMarker(address, element.name)
+      });
+    })
+    .catch(err => console.log(err))
+}
 
-
+//Methods to render map with places marked
 function initMap(query) {
   renderMap()
-  findPlaces(ironhackCoords, query)
+  getUserLocation()
+  findPlaces(userLocation, query)
 }
 
 function renderMap() {
-
   myMap = new google.maps.Map(
-    document.querySelector("#serviceMap"),
-    {
-      zoom: 13,
-      center: ironhackCoords
-    }
+    document.querySelector("#serviceMap"), { zoom: 13, center: userLocation })
+}
+
+function getUserLocation() {
+  navigator.geolocation.getCurrentPosition(
+    position => updateMapPosition(position),
+    error => console.error('Se ha producido un error:', error)
   )
 }
 
-function findPlaces(coordinates, queryValue) {
-  let request = {
-    location: coordinates,
-    radius: '1000',
-    query: queryValue
-  }
-  console.log(request)
-  service = new google.maps.places.PlacesService(myMap);
-  service.textSearch(request, callback);
+function updateMapPosition({ coords }) {
+  const { latitude: lat, longitude: lng } = coords
+  userLocation = { lat, lng }
+  myMap.setCenter(userLocation)
 }
 
-function callback(results, status) {
+function findPlaces(userLocation, queryValue) {
+  if (queryValue) {
+    let request = {
+      location: userLocation,
+      radius: '1000',
+      query: queryValue
+    }
+    service = new google.maps.places.PlacesService(myMap);
+    service.textSearch(request, getPlacesResult);
+  }
+}
+
+function getPlacesResult(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (let i = 0; i < results.length; i++) {
       name = results[i].name
       marker = { lat: results[i].geometry.location.lat(), lng: results[i].geometry.location.lng() }
       printMarker(marker, name)
-
-
     }
   }
 }
 
 function printMarker(place, name) {
-  new google.maps.Marker({
-    map: myMap,
-    position: place,
-    title: name
-  })
+  if (place) {
+    console.log("estoy en place", place)
+    new google.maps.Marker({
+      map: myMap,
+      position: place,
+      title: name
+    })
+  }
 }
