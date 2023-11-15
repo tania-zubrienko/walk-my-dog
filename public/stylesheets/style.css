@@ -36,7 +36,7 @@ h3 {
 
 .mybutton {
   background-color: #93e1d8;
-  color: white;
+  color: #aa4465;
   transition: background-color 0.3s ease;
 
 }
@@ -73,10 +73,34 @@ h3 {
 
 }
 
+.mybutton4 {
+  background-color: #ddfff7;
+  color: #7c3048;
+}
+
+.mybutton4:hover {
+  background-color: #baf2e5;
+  color: #361a42;
+
+}
+
+.mybutton5 {
+  background-color: #FFA69E;
+  color: white;
+}
+
+.mybutton5:hover {
+  background-color: #db8c85;
+  color: white;
+
+}
+
 .serviceMap {
-  height: 300px;
-  width: 70vw;
+  height: 500px;
+  width: 60vw;
   background-color: aquamarine;
+  border-radius: 15px;
+  border: solid 3px #ddfff7;
 }
 
 .carerMap {
@@ -120,7 +144,9 @@ h3 {
   margin-right: 3rem;
   height: 80vh;
   border-radius: 20px;
-  border: 3px solid #FFA69E;
+  border: 3px solid #ddfff7 #ddfff7;
+
+  background-color: rgba(254, 254, 254, 0.35);
 
 }
 
@@ -239,4 +265,20 @@ svg {
   display: flex;
   align-items: center;
   margin-left: 10px;
+}
+
+.icon {
+  width: 20px;
+  margin-left: 4px;
+
+}
+
+.custom-link {
+  font-size: 16px;
+  color: white !important;
+}
+
+.custom-link:hover {
+  font-size: 16px;
+  color: #aa4465 !important;
 }

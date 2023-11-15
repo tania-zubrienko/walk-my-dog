@@ -48,13 +48,10 @@ router.post('/reservar/:carer_id', isLoggedIn, (req, res, next) => {
 
 })
 
-router.get('/:carer_id/comentarios', isLoggedIn), (req, res, next) => {
-    const { carer_id } = req.params
-    res.render('comments/create-comment', { carer_id })
-}
+
 
 //POST dejar comentario
-router.post('/:carer_id/comentarios', isLoggedIn), (req, res, next) => {
+router.post('/:carer_id/comentarios', isLoggedIn, (req, res, next) => {
     const { carer_id: carer } = req.params
     const { _id: owner } = req.session.currentUser
     const { content, rating } = req.body
@@ -63,9 +60,9 @@ router.post('/:carer_id/comentarios', isLoggedIn), (req, res, next) => {
         .then(comment => console.log(comment))
         .then(() => res.redirect(`/cuidadores/${carer_id}`))
         .catch(err => console.log(err))
-}
+})
 
-router.post('/eliminar-comentario/:comment_id', isLoggedIn), (rec, res, next) => {
+router.post('/eliminar-comentario/:comment_id', isLoggedIn, (rec, res, next) => {
     const { comment_id: comment } = req.params
     Comment
         .findByIdAndDelete(comment)
@@ -73,7 +70,7 @@ router.post('/eliminar-comentario/:comment_id', isLoggedIn), (rec, res, next) =>
         .catch(err => console.log(err))
 
 
-}
+})
 //POST valorar
 
 
