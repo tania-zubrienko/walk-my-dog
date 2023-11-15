@@ -1,4 +1,4 @@
-const app = require("./../app")
+//const app = require("./../app")
 
 const isLoggedOut = (req, res, next) => {
     if (!req.session.currentUser) {
@@ -38,22 +38,9 @@ const checkOwner = (req, res, next) => {
     }
 }
 
-const sessionStarted = (req, res, next) => {
-    if (req.session.currentUser) {
-        res.locals.appUser = {
-            userName: req.session.currentUser.name,
-            isAdmin: req.session.currentUser.role === "ADMIN",
-            userImg: req.session.currentUser.img
-        }
-    }
-    next()
-}
-
-
 module.exports = {
     isLoggedOut,
     isLoggedIn,
     checkRole,
     checkOwner,
-    sessionStarted
 }

@@ -29,7 +29,8 @@ function printMarker(position) {
         console.log("estoy en place", position)
         new google.maps.Marker({
             map: carerDetailMap,
-            position
+            position,
+            icon: "/images/arrow-foodprint.png"
         })
     }
 }

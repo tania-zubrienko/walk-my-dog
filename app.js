@@ -20,7 +20,7 @@ app.locals.appTitle = `${projectName}`
 
 require("./config/session.config")(app)
 
-const { sessionStarted } = require('./middleware/route-guard')
+const sessionStarted = require('./middleware/locals.middleware')
 app.use(sessionStarted)
 
 require("./routes")(app)

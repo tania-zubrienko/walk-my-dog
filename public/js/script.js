@@ -29,19 +29,19 @@ sButton.addEventListener('click', () => assignQuery("tiendas para mascotas"))
 
 const pButton = document.querySelector("#parks")
 pButton.addEventListener('click', () => assignQuery("pipican"))
-let markerType
 
+let markerType = "/images/arrow-carer.png"
 const assignQuery = (query) => {
   if (query === "clinica veterinaria") {
-    markerType = "veterinary"
+    markerType = "/images/arrow-vet.png"
   } else if (query === "tiendas para mascotas") {
-    markerType = "food"
+    markerType = "/images/arrow-food2.png"
   } else if (query === "pipican") {
-    markerType = "park"
+    markerType = "/images/arrow-park.png"
   }
-
   initMap(query)
 }
+
 
 
 
@@ -60,9 +60,6 @@ function getCarersLocation() {
     .then(res => {
       res.data.forEach(element => {
         address = { lat: element.address.coordinates[0], lng: element.address.coordinates[1] }
-        console.log(address)
-        markerType = "carer"
-
         printMarker(address, element.name)
       });
     })
@@ -119,20 +116,6 @@ function getPlacesResult(results, status) {
 }
 
 
-const icons = {
-  veterinary: {
-    icon: "/images/arrow-vet.png",
-  },
-  food: {
-    icon: "/images/arrow-food2.png",
-  },
-  park: {
-    icon: "/images/arrow-park.png",
-  },
-  carer: {
-    icon: "/images/arrow-foodprint.png",
-  },
-};
 
 
 
@@ -143,7 +126,7 @@ function printMarker(place, name) {
       map: myMap,
       position: place,
       title: name,
-      icon: icons[markerType].icon
+      icon: markerType
     })
   }
 }
