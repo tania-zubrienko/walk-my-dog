@@ -75,7 +75,7 @@ router.post('/comentarios/:carer_id', isLoggedIn, (req, res, next) => {
         .then(comment => console.log(comment))
         .then(() => res.redirect(`/cuidadores/${carer}`))
         .catch(err => console.log(err))
-}))
+})
 
 router.post('/eliminar-comentario/:comment_id', isLoggedIn, (rec, res, next) => {
 
@@ -86,9 +86,8 @@ router.post('/eliminar-comentario/:comment_id', isLoggedIn, (rec, res, next) => 
             .findByIdAndDelete(comment)
             .then(() => res.redirect(`/cuidadores/${carer_id}`))
             .catch(err => console.log(err))
-
-
-    }
+    })
+})
 //POST valorar
 
 
