@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
 let myMap
 let userLocation = { lat: 40.44699825339554, lng: -3.6751472005642563 }
 
-
 //Autocomplete of the address input
 function initAutocomplete() {
   let input = document.querySelector('input[name="address"]');
@@ -49,8 +48,6 @@ function getCarersLocation() {
     .then(res => {
       res.data.forEach(element => {
         address = { lat: element.address.coordinates[0], lng: element.address.coordinates[1] }
-        console.log(address)
-
         printMarker(address, element.name)
       });
     })

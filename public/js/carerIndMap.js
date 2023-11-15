@@ -11,15 +11,14 @@ function init() {
 }
 
 function renderCarersMap() {
-    console.log("ESToy en render")
     renderMap()
     getCarerLocation()
 }
-
 function renderMap() {
     carerDetailMap = new google.maps.Map(
         document.querySelector("#carerDetailMap"), { zoom: 13, center: userLocation })
 }
+
 const carerId = document.querySelector('#carerId').value
 function getCarerLocation() {
     axios

@@ -2,7 +2,7 @@
     <h1>Lista de todos los cuidadores</h1>
     <div class="row">
         <div class="col-lg-6 careerMap mb-5">
-            <figure id="carerMap"></figure>
+            <figure class="carerMap" id="serviceMap"></figure>
         </div>
 
         <div class="col-lg-6">
@@ -34,4 +34,8 @@
     </div>
 
 
-    <script src="./../../js/carers.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./../../js/script.js"></script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?v=beta&key=AIzaSyBELJh4BpgqopdZkRIAycagEfb0RTDCbvs&libraries=places&callback=renderCarersMap">
+        </script>

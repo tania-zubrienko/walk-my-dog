@@ -69,13 +69,13 @@ h3 {
 
 }
 
-#serviceMap {
+.serviceMap {
   height: 300px;
   width: 70vw;
   background-color: aquamarine;
 }
 
-#carerMap {
+.carerMap {
   height: 400px;
   width: 500px;
   background-color: aquamarine;
