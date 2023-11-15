@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require("./../models/User.model")
-
+const Comment = require('./../models/Comment.model')
 const Booking = require('./../models/Booking.model')
 const { isLoggedIn, isLoggedOut } = require('./../middleware/route-guard')
 
@@ -48,11 +48,32 @@ router.post('/reservar/:carer_id', isLoggedIn, (req, res, next) => {
 
 })
 
-//GET dejar comentario
-
+router.get('/:carer_id/comentarios', isLoggedIn), (req, res, next) => {
+    const { carer_id } = req.params
+    res.render('comments/create-comment', { carer_id })
+}
 
 //POST dejar comentario
+router.post('/:carer_id/comentarios', isLoggedIn), (req, res, next) => {
+    const { carer_id: carer } = req.params
+    const { _id: owner } = req.session.currentUser
+    const { content, rating } = req.body
+    Comment
+        .create({ content, rating, carer, owner })
+        .then(comment => console.log(comment))
+        .then(() => res.redirect(`/cuidadores/${carer_id}`))
+        .catch(err => console.log(err))
+}
 
+router.post('/eliminar-comentario/:comment_id', isLoggedIn), (rec, res, next) => {
+    const { comment_id: comment } = req.params
+    Comment
+        .findByIdAndDelete(comment)
+        .then(() => res.redirect(`/cuidadores/${carer_id}`))
+        .catch(err => console.log(err))
+
+
+}
 //POST valorar
 
 
