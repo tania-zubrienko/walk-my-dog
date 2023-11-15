@@ -27,9 +27,14 @@ sButton.addEventListener('click', () => assignQuery("tiendas para mascotas"))
 
 const pButton = document.querySelector("#parks")
 pButton.addEventListener('click', () => assignQuery("pipican"))
+let markerType
 
-const assignQuery = (query) => initMap(query)
-
+const assignQuery = (query) => {
+  if (query === "clinica veterinaria") {
+    markerType = "veterinary"
+  }
+  initMap(query)
+}
 
 
 
@@ -92,7 +97,9 @@ function findPlaces(userLocation, queryValue) {
 }
 
 function getPlacesResult(results, status) {
+
   if (status == google.maps.places.PlacesServiceStatus.OK) {
+    //gestionar query y asignar type al markador
     for (let i = 0; i < results.length; i++) {
       name = results[i].name
       marker = { lat: results[i].geometry.location.lat(), lng: results[i].geometry.location.lng() }
@@ -101,13 +108,31 @@ function getPlacesResult(results, status) {
   }
 }
 
+const icons = {
+  veterinary: {
+    icon: "/images/arrow-vet.png",
+  },
+  food: {
+    icon: "/images/arrow-food.png",
+  },
+  park: {
+    icon: "/images/arrow-park.png",
+  },
+  carer: {
+    icon: "/images/arrow-foodprint.png",
+  },
+};
+
+
+
 function printMarker(place, name) {
   if (place) {
     console.log("estoy en place", place)
     new google.maps.Marker({
       map: myMap,
       position: place,
-      title: name
+      title: name,
+      icon: icons.veterinary.icon
     })
   }
 }
