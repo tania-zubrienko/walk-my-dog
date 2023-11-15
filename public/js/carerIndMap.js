@@ -11,34 +11,34 @@ function init() {
 }
 
 function renderCarersMap() {
+    console.log("ESToy en render")
     renderMap()
     getCarerLocation()
 }
 
 function renderMap() {
-    myMap = new google.maps.Map(
+    carerDetailMap = new google.maps.Map(
         document.querySelector("#carerDetailMap"), { zoom: 13, center: userLocation })
 }
+const carerId = document.querySelector('#carerId').value
 function getCarerLocation() {
     axios
-        .get("/api/carers-location/:carer_id}")
+        .get(`/api/carers-location/${carerId}`)
         .then(res => {
-            res.data(element => {
-                address = { lat: element.address.coordinates[0], lng: element.address.coordinates[1] }
-                console.log(address)
+            address = res.data.address
+            const position = { lat: address.coordinates[0], lng: address.coordinates[1] }
+            printMarker(position)
 
-                printMarker(address, element.name)
-            });
         })
+
         .catch(err => console.log(err))
 }
-function printMarker(place, name) {
-    if (place) {
-        console.log("estoy en place", place)
+function printMarker(position) {
+    if (position) {
+        console.log("estoy en place", position)
         new google.maps.Marker({
             map: carerDetailMap,
-            position: place,
-            title: name
+            position
         })
     }
 }
