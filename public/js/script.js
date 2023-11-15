@@ -1,13 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Walk-my-Dog JS imported successfully!");
-});
+  console.log("Walk-my-Dog JS imported successfully!")
+})
+
+
 let myMap
 let userLocation = { lat: 40.44699825339554, lng: -3.6751472005642563 }
+
+
 
 //Autocomplete of the address input
 function initAutocomplete() {
   let input = document.querySelector('input[name="address"]');
-  let autocomplete = new google.maps.places.Autocomplete(input, { types: ['geocode'] });
+  let autocomplete = new google.maps.places.Autocomplete(input, { types: ['geocode'] })
 
   autocomplete.addListener('place_changed', function () {
     let place = autocomplete.getPlace()

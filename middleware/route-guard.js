@@ -1,4 +1,5 @@
 const app = require("./../app")
+
 const isLoggedOut = (req, res, next) => {
     if (!req.session.currentUser) {
         next()
@@ -7,6 +8,7 @@ const isLoggedOut = (req, res, next) => {
     }
 
 }
+
 const isLoggedIn = (req, res, next) => {
     if (req.session.currentUser) {
         next()
@@ -43,7 +45,6 @@ const sessionStarted = (req, res, next) => {
             isAdmin: req.session.currentUser.role === "ADMIN",
             userImg: req.session.currentUser.img
         }
-        console.log("EL USUARIO ACTUAL ---->", res.locals.appUser)
     }
     next()
 }
