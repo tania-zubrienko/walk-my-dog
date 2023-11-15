@@ -6,16 +6,16 @@
 
             <div class="row justify-content-between ">
                 <div class="cont-avatar col-6 mt-4">
-                    <img class="avatar mb-3" src="{{avatar}}" alt="">
+                    <img class="avatar mb-3" src="{{user.avatar}}" alt="">
                     <div class="description-cont">
-                        <p><strong>Sobre mi:</strong> {{description}}</p>
+                        <p><strong>Sobre mi:</strong> {{user.description}}</p>
                     </div>
                 </div>
                 <div class="col-6 mt-4">
-                    <h1>Detalles de {{name}}</h1>
-                    <p><strong>@</strong> {{username}}</p>
-                    <p><strong>Nombre:</strong> {{name}}</p>
-                    <p><strong>Email:</strong> {{email}}</p>
+                    <h1>Detalles de {{user.name}}</h1>
+                    <p><strong>@</strong> {{user.username}}</p>
+                    <p><strong>Nombre:</strong> {{user.name}}</p>
+                    <p><strong>Email:</strong> {{user.email}}</p>
 
                     <h3>Localización</h3>
                     <figure id="carerDetailMap">
@@ -31,83 +31,83 @@
                 Reseva </a>
             <div class="colder p-3">
                 <h1>Comentarios</h1>
-                {{!--
-                <hr>
-                <p>blabla</p>
-<<<<<<< HEAD
-                <a href="/cuidadores/{{_id}}/comentarios" class="btn btn-md button-coment mybutton3 mb-2" id="comment">
-                    Crear Comentario </a> --}}
+                <div class="overflow-y-auto">
 
-
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comment">
-                    Dejar comentario
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="comment" tabindex="-1" aria-labelledby="commentLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="commentLabel">Deja tu review para {{name}}</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="/cuidadores/c/{{id}}" method="post">
-
-                                    <div class="mb-3">
-                                        <label for="content" class="form-label">Comentarios</label>
-                                        <textarea type="textarea" class="form-control" id="content" name="content"
-                                            rows="3"></textarea>
-                                    </div>
-
-                                    <div class="mb-3 d-flex align-items-center">
-                                        <label for="rating" class="form-label mb-0">Rating</label>
-                                        <div class="form-check form-check-inline emojiGroup">
-                                            <input class="form-check-input" type="radio" name="rating" value="1">
-                                            <label class="form-check-label emoji">😰</label>
-                                        </div>
-                                        <div class="form-check form-check-inline emojiGroup">
-                                            <input class="form-check-input" type="radio" name="rating" value="2">
-                                            <label class="form-check-label emoji">😟</label>
-                                        </div>
-                                        <div class="form-check form-check-inline emojiGroup">
-                                            <input class="form-check-input" type="radio" name="rating" value="3">
-                                            <label class="form-check-label emoji">😐</label>
-                                        </div>
-                                        <div class="form-check form-check-inline emojiGroup">
-                                            <input class="form-check-input" type="radio" name="rating" value="4">
-                                            <label class="form-check-label emoji">😊</label>
-                                        </div>
-                                        <div class="form-check form-check-inline emojiGroup">
-                                            <input class="form-check-input" type="radio" name="rating" value="5">
-                                            <label class="form-check-label emoji">😍</label>
-                                        </div>
-                                    </div>
-
-
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
+                    {{#each comments}}
+                    <div class="card">
+                        <div class="card-body">
+                            {{this.content}}
                         </div>
                     </div>
+                    {{/each}}
                 </div>
 
 
-=======
-                <a href="/cuidadores/{{_id}}/comentarios" class="btn btn-md button-coment mybutton3 mb-2">
-                    Crear Comentario </a>
->>>>>>> dcf252885ae0c820b2d652951110d2d2828e0636
+
+                <!-- Button trigger comment -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comment">
+                    Dejar comentario
+                </button>
             </div>
 
+            <!-- Modal -->
+            <div class="modal fade" id="comment" tabindex="-1" aria-labelledby="commentLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="commentLabel">Deja tu review para {{name}}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <form action="/cuidadores/comentarios/{{id}}" method="post">
+                                <div class="mb-3">
+                                    <label for="content" class="form-label">Comentarios</label>
+                                    <textarea type="textarea" class="form-control" id="content" name="content"
+                                        rows="3"></textarea>
+                                </div>
+
+                                <div class="mb-3 d-flex align-items-center">
+                                    <label for="rating" class="form-label mb-0">Rating</label>
+                                    <div class="form-check form-check-inline emojiGroup">
+                                        <input class="form-check-input" type="radio" name="rating" value="1">
+                                        <label class="form-check-label emoji">😰</label>
+                                    </div>
+                                    <div class="form-check form-check-inline emojiGroup">
+                                        <input class="form-check-input" type="radio" name="rating" value="2">
+                                        <label class="form-check-label emoji">😟</label>
+                                    </div>
+                                    <div class="form-check form-check-inline emojiGroup">
+                                        <input class="form-check-input" type="radio" name="rating" value="3">
+                                        <label class="form-check-label emoji">😐</label>
+                                    </div>
+                                    <div class="form-check form-check-inline emojiGroup">
+                                        <input class="form-check-input" type="radio" name="rating" value="4">
+                                        <label class="form-check-label emoji">😊</label>
+                                    </div>
+                                    <div class="form-check form-check-inline emojiGroup">
+                                        <input class="form-check-input" type="radio" name="rating" value="5">
+                                        <label class="form-check-label emoji">😍</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </form>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+
     </div>
 </div>
-<input type="hidden" value="{{id}}" id="carerId">
+</div>
+<input type="hidden" value="{{user.id}}" id="carerId">
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="/js/carerIndMap.js"></script>
 <script

@@ -15,6 +15,7 @@ router.get('/signup', (req, res, next) => {
     res.render('auth/signup-form')
 })
 router.post('/signup', uploaderMiddleware.single("avatar"), (req, res, next) => {
+
     const { name, email, password, username, description, lng, lat, role } = req.body
     const address = { type: "Point", coordinates: [lat, lng] }
     const { path: avatar } = req.file
@@ -33,6 +34,7 @@ router.post('/signup', uploaderMiddleware.single("avatar"), (req, res, next) => 
 router.get('/login', (req, res, next) => {
     res.render('auth/login-form')
 })
+
 router.post('/login', (req, res, next) => {
     const { email, password } = req.body
     User

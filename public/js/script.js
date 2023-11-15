@@ -18,6 +18,7 @@ function initAutocomplete() {
   })
 }
 
+// TODO: DESACOPLAR LOGICAS DE MAPA EN SCRIPTR DE MAPA PARA LA VISTA DEL MAPA
 
 
 //Showing locations acording to the button pressed
@@ -54,6 +55,7 @@ function renderCarersMap() {
   getCarersLocation()
 }
 
+// TODO OPCIONAL: EXTRAER EN SERVICIOS
 function getCarersLocation() {
   axios
     .get("/api/carers-location")

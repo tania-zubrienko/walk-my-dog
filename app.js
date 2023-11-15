@@ -1,31 +1,23 @@
 require("dotenv").config()
 require("./db")
+
 const express = require("express")
-
-
-const hbs = require("hbs")
-hbs.handlebars.registerHelper('formatDate', (fecha) => {
-    return new Date(fecha).toLocaleString('es-ES', { year: 'numeric', month: 'numeric', day: 'numeric' });
-});
-
 const app = express()
 
+const hbs = require("hbs")
+hbs.handlebars.registerHelper('formatDate', (inputDate) => {
+    return new Date(inputDate).toLocaleString('es-ES', { year: 'numeric', month: 'numeric', day: 'numeric' })
+})
+
 require("./config")(app)
-
-
-const projectName = "Walk-my-Dog"
-
-app.locals.appTitle = `${projectName}`
-
-
 require("./config/session.config")(app)
+
+app.locals.appTitle = "Walk-my-Dog"
 
 const sessionStarted = require('./middleware/locals.middleware')
 app.use(sessionStarted)
 
 require("./routes")(app)
 require("./error-handling")(app)
-
-
 
 module.exports = app

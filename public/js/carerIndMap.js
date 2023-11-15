@@ -30,7 +30,7 @@ function printMarker(position) {
         new google.maps.Marker({
             map: carerDetailMap,
             position,
-            icon: "/images/arrow-foodprint.png"
+            icon: "/images/arrow-carer.png"
         })
     }
 }
