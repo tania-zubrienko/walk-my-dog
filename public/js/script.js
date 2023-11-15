@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 let myMap
 let userLocation = { lat: 40.44699825339554, lng: -3.6751472005642563 }
 
+
 //Autocomplete of the address input
 function initAutocomplete() {
   let input = document.querySelector('input[name="address"]');
@@ -32,7 +33,12 @@ let markerType
 const assignQuery = (query) => {
   if (query === "clinica veterinaria") {
     markerType = "veterinary"
+  } else if (query === "tiendas para mascotas") {
+    markerType = "food"
+  } else if (query === "pipican") {
+    markerType = "park"
   }
+
   initMap(query)
 }
 
@@ -53,6 +59,9 @@ function getCarersLocation() {
     .then(res => {
       res.data.forEach(element => {
         address = { lat: element.address.coordinates[0], lng: element.address.coordinates[1] }
+        console.log(address)
+        markerType = "carer"
+
         printMarker(address, element.name)
       });
     })
@@ -108,12 +117,13 @@ function getPlacesResult(results, status) {
   }
 }
 
+
 const icons = {
   veterinary: {
     icon: "/images/arrow-vet.png",
   },
   food: {
-    icon: "/images/arrow-food.png",
+    icon: "/images/arrow-food2.png",
   },
   park: {
     icon: "/images/arrow-park.png",
@@ -132,7 +142,7 @@ function printMarker(place, name) {
       map: myMap,
       position: place,
       title: name,
-      icon: icons.veterinary.icon
+      icon: icons[markerType].icon
     })
   }
 }
