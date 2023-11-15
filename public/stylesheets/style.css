@@ -15,6 +15,10 @@ h3 {
   font-size: 17px;
 }
 
+.card-title {
+  color: #361a42 !important;
+}
+
 .navbar-brand {
   width: 170px;
 }
@@ -167,7 +171,15 @@ h3 {
   top: 100px;
 }
 
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: #361a42
+}
 
 * {
   padding: 0;
@@ -210,5 +222,11 @@ svg {
   margin-left: 10px;
   border-color: #fad7d4 !important;
   color: #FFA69E !important;
+
+}
+
+
+.table {
+  padding: 50px;
 
 }
