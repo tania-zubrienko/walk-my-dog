@@ -65,7 +65,7 @@ router.get('/reservas', (req, res, next) => {
             .find({ carer: userId })
             .populate("owner")
             .then(bookings => {
-                res.render('bookings/career-booking', { bookings })
+                res.render('bookings/carer-booking', { bookings })
             })
             .catch(err => next(err))
     }
