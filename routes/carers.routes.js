@@ -53,8 +53,5 @@ router.post('/reservar/:carer_id', isLoggedIn, (req, res, next) => {
 
 //POST dejar comentario
 
-//POST valorar
-
-
 
 module.exports = router
