@@ -58,7 +58,7 @@
       </svg>
 
 
-      <nav class="nav navbar navbar-expand-lg navbar-light bg-light mb-3">
+      <nav class="nav align-items-center navbar navbar-expand-lg navbar-dark bg-dark mb-3" data-bs-theme="dark">
          <div class="container-fluid navb">
 
             <a href="/"> <img src="/images/prueba.png" class="navbar-brand"></img></a>
@@ -69,10 +69,10 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                <div class="navbar-nav justify-content-between">
                   <div class="uno d-flex">
-                     <a class="nav-link" href="/servicios">Servicios</a>
-                     <a class="nav-link" href="/cuidadores/lista">Cuidadores</a>
+                     <a class="custom-link nav-link" href="/servicios">Servicios</a>
+                     <a class=" custom-link nav-link" href="/cuidadores/lista">Cuidadores</a>
                      {{#if appUser.isAdmin}}
-                     <a class="nav-link" href="/listado-usuarios">Listado de usuarios</a>
+                     <a class="custom-link nav-link" href="/listado-usuarios">Listado de usuarios</a>
                      {{/if}}
                   </div>
 
