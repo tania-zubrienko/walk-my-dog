@@ -29,7 +29,15 @@ router.get('/:carer_id', isLoggedIn, (req, res, next) => {
             console.log(response)
             const user = response[0]
             const comments = response[1]
-            res.render("users/carer-details", { user, comments })
+
+            let counter = 0
+            comments.forEach(eachComment => {
+                counter += eachComment.rating
+            })
+            let ratingAverage = counter / comments.length
+            const ratingAveragePer = (ratingAverage / 10).toFixed(2)
+
+            res.render("users/carer-details", { user, comments, ratingAverage, ratingAveragePer })
         })
         .catch(err => next(err))
 })

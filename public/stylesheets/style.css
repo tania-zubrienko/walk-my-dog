@@ -160,6 +160,7 @@ h3 {
   border-radius: 20px;
   border: 3px solid #7c3048;
   height: 72vh;
+  background-color: rgba(254, 254, 254, 0.35);
 }
 
 .cont-avatar {
@@ -306,4 +307,13 @@ svg {
   height: 150px;
 
   object-fit: cover;
+}
+
+label {
+  color: #361a42;
+}
+
+.progress,
+.progress-stacked {
+  --bs-progress-bar-bg: #67327d !important;
 }
