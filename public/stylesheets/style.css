@@ -107,8 +107,14 @@ h3 {
   height: 400px;
   width: 500px;
   background-color: aquamarine;
-  position: fixed;
+
   border-radius: 15px;
+  border: solid 3px #ddfff7;
+}
+
+.dinamicMap {
+  position: fixed !important;
+
 }
 
 .careerMap {
@@ -281,4 +287,23 @@ svg {
 .custom-link:hover {
   font-size: 16px;
   color: #aa4465 !important;
+}
+
+.overflow {
+  margin-bottom: 10px;
+  width: auto;
+  height: 100px;
+  /* overflow-x: hidden;
+      Hide horizontal scrollbar */
+  overflow-y: scroll;
+  /* Add vertical scrollbar */
+
+}
+
+.card-img {
+  object-position: top;
+
+  height: 150px;
+
+  object-fit: cover;
 }
