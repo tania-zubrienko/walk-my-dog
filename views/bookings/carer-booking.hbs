@@ -61,8 +61,9 @@
                 <h3>Opciones</h3>
             </div>
         </div>
+        {{#each bookings}}
         <div class="row text-center align-items-center">
-            {{#each bookings}}
+
             <div class="col-2 mycol pt-2">
                 <p>{{formatDate dateStart}} - {{formatDate dateFinish}}</p>
             </div>
@@ -86,7 +87,8 @@
                 <a href="/perfil/reservas/cancel/{{id}}" class="btn btn-sm mybutton2">Cancelar</a>
                 <a href="/perfil/reservas/accept/{{id}}" class="btn btn-sm mybutton">Aceptar</a>
             </div>
-            {{/each}}
+
         </div>
+        {{/each}}
     </div>
 </div>
