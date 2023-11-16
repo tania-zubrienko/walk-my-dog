@@ -18,8 +18,14 @@ router.post('/signup', uploaderMiddleware.single("avatar"), (req, res, next) => 
 
     const { name, email, password, username, description, lng, lat, role } = req.body
     const address = { type: "Point", coordinates: [lat, lng] }
-    const { path: avatar } = req.file
 
+    let avatar
+    req.file ? avatar = req.file.path : avatar = "/images/holaaa.jpeg"
+    // if (req.file) {
+    //     avatar = req.file.path
+    // } else {
+    //     avatar = "/images/holaaa.jpeg"
+    // }
     bcrypt
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(password, salt))

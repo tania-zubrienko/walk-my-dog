@@ -12,13 +12,14 @@ class MapService {
 
     printMarkerCarer(position, markerType, name, url) {
         if (position) {
-            new google.maps.Marker({
+            const marker = new google.maps.Marker({
                 map: this.map,
                 position,
                 icon: markerType,
                 title: name,
                 url
             })
+            marker.addListener("click", () => location.href = marker.url)
         }
     }
 }
