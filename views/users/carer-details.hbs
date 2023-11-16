@@ -28,10 +28,26 @@
         <div class="col-4 ">
 
             <a href="/cuidadores/{{user._id}}/reservar" class="btn btn-block btn-lg mybutton mb-2"
-                style="padding:2.5% 40%;">Reserva </a>
+                style="padding:2.5% 40%; border: solid 3px  white; color: white;">Reserva </a>
             <div class="colder p-3 d-flex flex-column justify-content-between">
                 <section>
                     <h1>Comentarios</h1>
+                    <div class="row align-items-center">
+                        <div class="col-10">
+                            <div class="progress" role="progressbar" aria-label="Animated striped example"
+                                aria-valuenow={{ratingAverage}} aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                    style="width: {{ratingAverage}}%"></div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <h1 style="margin: 0;">{{ratingAveragePer}}</h1>
+                        </div>
+                    </div>
+
+
+
+
                     <div class="overflow-y-auto">
                         {{#each comments}}
                         <div class="card mt-3">
@@ -43,7 +59,7 @@
                     </div>
                 </section>
                 <!-- Button trigger comment -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comment">
+                <button type="button" class="btn mybutton3" data-bs-toggle="modal" data-bs-target="#comment">
                     Dejar comentario
                 </button>
             </div>
@@ -73,29 +89,30 @@
                             <div class="mb-3 d-flex align-items-center">
                                 <label for="rating" class="form-label mb-0">Rating</label>
                                 <div class="form-check form-check-inline emojiGroup">
-                                    <input class="form-check-input" type="radio" name="rating" value="1">
+                                    <input class="form-check-input" type="radio" name="rating" value="20">
                                     <label class="form-check-label emoji">😰</label>
                                 </div>
                                 <div class="form-check form-check-inline emojiGroup">
-                                    <input class="form-check-input" type="radio" name="rating" value="2">
+                                    <input class="form-check-input" type="radio" name="rating" value="40">
                                     <label class="form-check-label emoji">😟</label>
                                 </div>
                                 <div class="form-check form-check-inline emojiGroup">
-                                    <input class="form-check-input" type="radio" name="rating" value="3">
+                                    <input class="form-check-input" type="radio" name="rating" value="60">
                                     <label class="form-check-label emoji">😐</label>
                                 </div>
                                 <div class="form-check form-check-inline emojiGroup">
-                                    <input class="form-check-input" type="radio" name="rating" value="4">
+                                    <input class="form-check-input" type="radio" name="rating" value="80">
                                     <label class="form-check-label emoji">😊</label>
                                 </div>
                                 <div class="form-check form-check-inline emojiGroup">
-                                    <input class="form-check-input" type="radio" name="rating" value="5">
+                                    <input class="form-check-input" type="radio" name="rating" value="100">
                                     <label class="form-check-label emoji">😍</label>
                                 </div>
                             </div>
                             <div class="modal-footer d-flex justify-content-between">
-                                <button type="submit" class="btn mybutton">Publicar</button>
-                                <button type="button" class="btn  mybutton" data-bs-dismiss="modal">Cerrar</button>
+
+                                <button type="button" class="btn  mybutton3 p-2" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn mybutton p-2">Publicar</button>
                             </div>
                         </form>
 
@@ -114,6 +131,7 @@
 <input type="hidden" value="{{user.id}}" id="carerId">
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/services/mapStyles.js"></script>
 <script src="/js/services/map.services.js"></script>
 <script src="/js/carersMap.js"></script>
 <script
