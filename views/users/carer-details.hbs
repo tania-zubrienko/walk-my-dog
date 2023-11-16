@@ -31,7 +31,7 @@
                 style="padding:2.5% 40%; border: solid 3px  white; color: white;">Reserva </a>
             <div class="colder p-3 d-flex flex-column justify-content-between">
                 <section>
-                    <h1>Comentarios</h1>
+                    <h1>Valoración</h1>
                     <div class="row align-items-center">
                         <div class="col-10">
                             <div class="progress" role="progressbar" aria-label="Animated striped example"
@@ -39,6 +39,7 @@
                                 <div class="progress-bar progress-bar-striped progress-bar-animated"
                                     style="width: {{ratingAverage}}%"></div>
                             </div>
+
                         </div>
                         <div class="col-2">
                             <h1 style="margin: 0;">{{ratingAveragePer}}</h1>
@@ -49,11 +50,17 @@
 
 
                     <div class="overflow-y-auto">
+                        <h1>Comentarios</h1>
                         {{#each comments}}
-                        <div class="card mt-3">
-                            <div class="card-body">
-                                {{content}}
+
+                        <div class="custom-card mt-3">
+                            <div class="body-coment d-flex">
+                                <h3><strong>{{this.owner.name}}</strong></h3>
+                                <h3><strong>Valoración:</strong>{{rating}}%</h3>
                             </div>
+                            <hr>
+
+                            {{content}}
                         </div>
                         {{/each}}
                     </div>

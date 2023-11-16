@@ -74,13 +74,13 @@ h3 {
 }
 
 .mybutton4 {
-  background-color: #ddfff7;
-  color: #7c3048;
+  background-color: #23abbc;
+  color: white;
 }
 
 .mybutton4:hover {
-  background-color: #baf2e5;
-  color: #361a42;
+  background-color: #2092a1;
+  color: white;
 
 }
 
@@ -316,4 +316,18 @@ label {
 .progress,
 .progress-stacked {
   --bs-progress-bar-bg: #67327d !important;
+}
+
+.custom-card {
+  padding: 1rem;
+  background-color: rgba(254, 254, 254, 0.45) !important;
+  border-radius: 5px;
+
+}
+
+.body-coment {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -1rem;
+
 }

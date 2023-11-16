@@ -16,7 +16,7 @@ router.get('/:carer_id', isLoggedIn, (req, res, next) => {
     const { carer_id } = req.params
     const promises = [
         User.findById(carer_id),
-        Comment.find({ carer: carer_id })
+        Comment.find({ carer: carer_id }).populate('owner')
     ]
     Promise
         .all(promises)
@@ -31,6 +31,8 @@ router.get('/:carer_id', isLoggedIn, (req, res, next) => {
             })
             let ratingAverage = counter / comments.length
             const ratingAveragePer = (ratingAverage / 10).toFixed(2)
+
+
 
             res.render("users/carer-details", { user, comments, ratingAverage, ratingAveragePer })
         })
