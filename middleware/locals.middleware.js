@@ -3,7 +3,7 @@ const sessionStarted = (req, res, next) => {
         res.locals.appUser = {
             userName: req.session.currentUser.name,
             isAdmin: req.session.currentUser.role === "ADMIN",
-            userImg: req.session.currentUser.img
+            // userImg: req.session.currentUser.img
         }
     }
     next()

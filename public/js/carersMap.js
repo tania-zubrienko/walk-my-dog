@@ -27,7 +27,6 @@ function getAllLocation() {
         .get("/api/carers-location")
         .then(res => {
             res.data.forEach(element => {
-                console.log(element)
                 url = ("/cuidadores/" + element._id)
 
                 address = { lat: element.address.coordinates[0], lng: element.address.coordinates[1] }

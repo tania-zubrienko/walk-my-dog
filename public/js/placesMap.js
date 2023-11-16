@@ -57,10 +57,15 @@ function initMap(query) {
 
 function renderMap() {
     myMap = new google.maps.Map(
-        document.querySelector("#serviceMap"), { zoom: 13, center: userLocation })
+        document.querySelector("#serviceMap"), {
+        zoom: 13,
+        center: userLocation,
+        styles
+    })
 }
 
 function getUserLocation() {
+    console.log("estoy en LOCATIONS")
     navigator.geolocation.getCurrentPosition(
         position => updateMapPosition(position),
         error => console.error('Se ha producido un error:', error)
@@ -70,10 +75,13 @@ function getUserLocation() {
 function updateMapPosition({ coords }) {
     const { latitude: lat, longitude: lng } = coords
     userLocation = { lat, lng }
+    console.log(userLocation)
     myMap.setCenter(userLocation)
 }
 
 function findPlaces(userLocation, queryValue) {
+    console.log("estoy en FIND")
+
     if (queryValue) {
         let request = {
             location: userLocation,
@@ -86,6 +94,7 @@ function findPlaces(userLocation, queryValue) {
 }
 
 function getPlacesResult(results, status) {
+    console.log("estoy en FETPLACES")
 
     if (status == google.maps.places.PlacesServiceStatus.OK) {
         results.forEach(elm => {
