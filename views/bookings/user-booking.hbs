@@ -1,37 +1,49 @@
 <div class="container">
-    <h1>Mis reservas</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Fechas</th>
-                <th scope="col">Cuidador reservado</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Tipo de mascota</th>
-                <th scope="col">Información addicional</th>
-                <th scope="col">Status</th>
-                <th></th>
 
-            </tr>
-        </thead>
-        <tbody>
+    <div class="bookings-container">
+        <h1 class="mb-4 text-center">Mis reservas</h1>
+        <div class="row myrow text-center">
+
+            <div class="col-2 mycol  ">
+                <h3>Fechas</h3>
+            </div>
+            <div class="col-2 mycol ">
+                <h3>Cuidador reservado</h3>
+            </div>
+            <div class="col-2 mycol ">
+                <h3>Teléfono</h3>
+            </div>
+            <div class="col-2 mycol ">
+                <h3>Tipo de mascota</h3>
+            </div>
+            <div class="col-2 mycol ">
+                <h3>Información adicional</h3>
+            </div>
+            <div class="col-2  ">
+                <h3>Status</h3>
+            </div>
+        </div>
+        <div class="row text-center">
             {{#each bookings}}
-            <tr>
-                <td>{{formatDate dateStart}} - {{formatDate dateFinish}}</td>
-                <td>{{carer.name}}</td>
-                <td>{{phone}}</td>
-                <td>{{petType}} ({{petNumber}})</td>
-                <td>{{notes}}</td>
-                <td>{{status}}</td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a href="/perfil/reservas/editar/{{id}}">Editar reserva</a>
-                        <form action="/perfil/reservas/eliminar/{{id}}" method="post">
-                            <button type="submit">Eliminar reserva</button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+            <div class="col-2 mycol pt-2">
+                <p>{{formatDate dateStart}} - {{formatDate dateFinish}}</p>
+            </div>
+            <div class="col-2 mycol pt-2">
+                <p>{{carer.name}}</p>
+            </div>
+            <div class="col-2 mycol pt-2">
+                <p>{{phone}}</p>
+            </div>
+            <div class="col-2 mycol pt-2">
+                <p>{{petType}}({{petNumber}})</p>
+            </div>
+            <div class="col-2 mycol pt-2">
+                <p>{{bookingNotes}}</p>
+            </div>
+            <div class="col-2  pt-2">
+                <p>{{status}}</p>
+                {{/each}}
+            </div>
+        </div>
+    </div>
 </div>
