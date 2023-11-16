@@ -14,5 +14,6 @@ module.exports = app => {
     const profileRoutes = require("./profile.routes")
     app.use("/perfil", profileRoutes)
 
-    //googlemaps api ¿?
+    const bookingRoutes = require("./bookings.routes")
+    app.use('/perfil/reservas', bookingRoutes)
 }
