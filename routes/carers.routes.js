@@ -4,17 +4,12 @@ const User = require("./../models/User.model")
 const Comment = require('./../models/Comment.model')
 const Booking = require('./../models/Booking.model')
 const { isLoggedIn, isLoggedOut } = require('./../middleware/route-guard')
-
-
-// TODO: IMPLEMENTAR NEXT EN TODOS LSO CATCH
+const {
+    getCarersList
+} = require("./../controllers/carers.controllers")
 
 //GET listado
-router.get('/lista', (req, res) => {
-    User
-        .find({ role: 'CARER' })
-        .then(users => res.render('users/carer-list', { users }))
-        .catch(err => next(err))
-})
+router.get('/lista', getCarersList)
 
 //GET detalles
 router.get('/:carer_id', isLoggedIn, (req, res, next) => {

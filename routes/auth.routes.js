@@ -1,70 +1,26 @@
 const express = require('express')
 const router = express.Router()
 
-//encriptación de contraseñas
-const bcrypt = require("bcryptjs")
-const saltRounds = 10
-
-const User = require("./../models/User.model")
 const uploaderMiddleware = require("./../middleware/uploader.middleware")
 
+const {
+    signUp,
+    signUpHandler,
+    logIn,
+    logInHandler,
+    logOut
+} = require("./../controllers/auth.controller")
 
 
-//signup GET POST
-router.get('/signup', (req, res, next) => {
-    res.render('auth/signup-form')
-})
-router.post('/signup', uploaderMiddleware.single("avatar"), (req, res, next) => {
+router.get('/signup', signUp)
 
-    const { name, email, password, username, description, lng, lat, role } = req.body
-    const address = { type: "Point", coordinates: [lat, lng] }
+router.post('/signup', uploaderMiddleware.single("avatar"), signUpHandler)
 
-    let avatar
-    req.file ? avatar = req.file.path : avatar = "/images/holaaa.jpeg"
-    // if (req.file) {
-    //     avatar = req.file.path
-    // } else {
-    //     avatar = "/images/holaaa.jpeg"
-    // }
-    bcrypt
-        .genSalt(saltRounds)
-        .then(salt => bcrypt.hash(password, salt))
-        .then(hashedPwd => User.create({ name, email, password: hashedPwd, username, description, address, avatar, role }))
-        .then(() => res.redirect('/'))
-        .catch(err => next(err))
-})
+router.get('/login', logIn)
 
+router.post('/login', logInHandler)
 
-
-//login GET POST
-router.get('/login', (req, res, next) => {
-    res.render('auth/login-form')
-})
-
-router.post('/login', (req, res, next) => {
-    const { email, password } = req.body
-    User
-        .findOne({ email })
-        .then(foundUser => {
-            if (foundUser && bcrypt.compareSync(password, foundUser.password)) {
-                req.session.currentUser = foundUser
-                //console.log(req.session.currentUser)
-                res.redirect("/")
-            }
-            else {
-                res.render('auth/login-form', { errorMessage: "Email o contraseña incorrecta" })
-            }
-        })
-        .catch(err => next(err))
-})
-
-
-
-//logout POST
-router.get('/logout', (req, res, next) => {
-    req.session.destroy(() => res.redirect('/'))
-})
-
+router.get('/logout', logOut)
 
 
 module.exports = router;
