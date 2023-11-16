@@ -1,4 +1,4 @@
-<div class="container">
+{{!-- <div class="container">
     <h1>Listado de reservas</h1>
     <table class="table">
         <thead>
@@ -24,12 +24,69 @@
                 <td>{{status}}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a href="/perfil/reservas/accept/{{id}}" class="btn btn-sm btn-danger">Aceptar</a>
-                        <a href="/perfil/reservas/cancel/{{id}}" class="btn btn-sm btn-danger">Cancelar</a>
+
                     </div>
                 </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
+</div> --}}
+
+<div class="container">
+
+    <div class="bookings-container">
+        <h1 class="mb-4 text-center ">Mis reservas</h1>
+        <div class="row myrow text-center align-items-center">
+
+            <div class="col-2 mycol">
+                <h3>Fechas</h3>
+            </div>
+            <div class="col-2 mycol">
+                <h3>Nombre de cliente</h3>
+            </div>
+            <div class="col-2 mycol">
+                <h3>Teléfono</h3>
+            </div>
+            <div class="col-1 mycol">
+                <h3>Mascota</h3>
+            </div>
+            <div class="col-2 mycol ">
+                <h3>Información adicional</h3>
+            </div>
+            <div class="col-1 mycol">
+                <h3>Status</h3>
+            </div>
+            <div class="col-2">
+                <h3>Opciones</h3>
+            </div>
+        </div>
+        <div class="row text-center align-items-center">
+            {{#each bookings}}
+            <div class="col-2 mycol pt-2">
+                <p>{{formatDate dateStart}} - {{formatDate dateFinish}}</p>
+            </div>
+            <div class="col-2 mycol pt-2">
+                <p>{{owner.name}}</p>
+            </div>
+            <div class="col-2 mycol pt-2">
+                <p>{{phone}}</p>
+            </div>
+            <div class="col-1 mycol pt-2">
+                <p>{{petType}}({{petNumber}})</p>
+            </div>
+            <div class="col-2 mycol pt-2">
+                <p>{{bookingNotes}}</p>
+            </div>
+            <div class="col-1 mycol  pt-2">
+                <p>{{status}}</p>
+
+            </div>
+            <div class="col-2">
+                <a href="/perfil/reservas/cancel/{{id}}" class="btn btn-sm mybutton2">Cancelar</a>
+                <a href="/perfil/reservas/accept/{{id}}" class="btn btn-sm mybutton">Aceptar</a>
+            </div>
+            {{/each}}
+        </div>
+    </div>
 </div>
