@@ -1,6 +1,4 @@
-//const User = require("./../models/User.model")
 const Booking = require("./../models/Booking.model")
-//const Comment = require("./../models/Comment.model")
 
 const getBookings = (req, res, next) => {
 
