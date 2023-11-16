@@ -21,11 +21,12 @@ router.get('/:carer_id', isLoggedIn, (req, res, next) => {
     const { carer_id } = req.params
     const promises = [
         User.findById(carer_id),
-        Comment.find({ carer: carer_id }).populate("carer")
+        Comment.find({ carer: carer_id })
     ]
     Promise
         .all(promises)
         .then(response => {
+            console.log(response)
             const user = response[0]
             const comments = response[1]
             res.render("users/carer-details", { user, comments })

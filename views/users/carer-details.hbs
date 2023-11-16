@@ -36,7 +36,7 @@
                         {{#each comments}}
                         <div class="card mt-3">
                             <div class="card-body">
-                                {{this.content}}
+                                {{content}}
                             </div>
                         </div>
                         {{/each}}
@@ -112,8 +112,9 @@
 </div>
 </div>
 <input type="hidden" value="{{user.id}}" id="carerId">
-{{!--
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> --}}
-<script src="/js/carerIndMap.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/services/map.services.js"></script>
+<script src="/js/carersMap.js"></script>
 <script
-    src="https://maps.googleapis.com/maps/api/js?callback=renderCarersMap&key=AIzaSyCVIi2FBEHjFi0klzM7Xj0HMR-mT4JZGq4"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVIi2FBEHjFi0klzM7Xj0HMR-mT4JZGq4&callback=renderSingleCarer"></script>

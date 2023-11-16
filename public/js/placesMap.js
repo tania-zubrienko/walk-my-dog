@@ -1,5 +1,6 @@
-let myMap
 let userLocation = { lat: 40.44699825339554, lng: -3.6751472005642563 }
+let myMap = document.querySelector("#serviceMap")
+
 //Showing locations acording to the button pressed
 const vButton = document.querySelector("#vets")
 vButton.addEventListener('click', () => assignQuery("clinica veterinaria"))
