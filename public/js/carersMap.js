@@ -27,14 +27,14 @@ function getAllLocation() {
         .get("/api/carers-location")
         .then(res => {
             res.data.forEach(element => {
-                name = element.name
+                console.log(element)
                 url = ("/cuidadores/" + element._id)
 
                 address = { lat: element.address.coordinates[0], lng: element.address.coordinates[1] }
                 mapService.printMarkerCarer(address, markerType, name, url)
             });
         })
-        .catch(err => next(err))
+        .catch(err => console.log(err))
 }
 
 
