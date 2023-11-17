@@ -35,12 +35,19 @@ const editProfileHandler = (req, res, next) => {
 
 const deleteProfile = (req, res, next) => {
 
-    const { _id: userId } = req.session.currentUser
-    req.session.destroy()
+    const { id: userId } = req.params
+    console.log(userId)
 
     User
         .findByIdAndDelete(userId)
-        .then(() => res.redirect("/"))
+        .then(() => {
+            if (userId === req.session.currentUser._id) {
+                req.session.destroy()
+                res.redirect("/")
+            } else {
+                res.redirect("/listado-usuarios")
+            }
+        })
         .catch(err => next(err))
 }
 
