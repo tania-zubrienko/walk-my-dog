@@ -1,5 +1,26 @@
 <h1>Walk My Dog  / Care my Pet</h1>
 
+Walk My Dog is a service designed to meet the needs of pet owners who require assistance with their beloved pets while they are away from home or occupied with other responsibilities. 
+The platform facilitates seamless communication and coordination between three main roles: Admin, Client (pet owner), and Pet Carer.
+<hr>
+
+<h3>Key Features:</h3>
+
+<h4>User Roles:</h4>
+
+Admin: Has access to all user profiles, enabling the viewing and deletion of information as needed.
+Client (Pet Owner): Can access the platform to view a map displaying available pet care services. By selecting specific criteria and pressing a button, the map displays markers corresponding to services in the user's neighborhood. Additionally, users can view registered pet carers in their area.
+Pet Carer: Accesses services similar to clients but with a focus on managing bookings. Carers can accept or cancel assigned bookings.
+
+Geolocation:
+The app implements geolocation technology to provide users with the exact location of the logged-in user. This feature enhances the precision of service delivery.
+Booking Services:
+
+Clients can book services by providing details about their pets and specifying the required services. The booking status (pending, accepted, or canceled) is displayed in the user's account, with management handled by the assigned pet carer.
+User-Friendly Interface:
+
+Intuitive platform design allows users to edit their information or delete their profiles easily, ensuring flexibility and control over their accounts.
+
 <table>
   <thead>
     <tr>
