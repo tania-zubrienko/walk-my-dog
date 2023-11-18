@@ -1,4 +1,4 @@
-<h1>Walk My Dog  / Care my Pet</h1>
+<h1>Walk My Dog </h1>
 
 Walk My Dog is a service designed to meet the needs of pet owners who require assistance with their beloved pets while they are away from home or occupied with other responsibilities. 
 The platform facilitates seamless communication and coordination between three main roles: Admin, Client (pet owner), and Pet Carer.
