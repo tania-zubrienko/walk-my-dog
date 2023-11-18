@@ -8,8 +8,8 @@ The platform facilitates seamless communication and coordination between three m
 
 <h4>User Roles:</h4>
 
-Admin: Has access to all user profiles, enabling the viewing and deletion of information as needed.
-Client (Pet Owner): Can access the platform to view a map displaying available pet care services. By selecting specific criteria and pressing a button, the map displays markers corresponding to services in the user's neighborhood. Additionally, users can view registered pet carers in their area.
+Admin: Has access to all user profiles, enabling the viewing and deleting information as needed.
+Client (Pet Owner): Can access the platform to view a map displaying available pet care services. The map displays markers corresponding to services in the user's neighborhood by selecting specific criteria and pressing a button. Additionally, users can view registered pet carers in their area.
 Pet Carer: Accesses services similar to clients but with a focus on managing bookings. Carers can accept or cancel assigned bookings.
 
 Geolocation:
@@ -37,63 +37,63 @@ Intuitive platform design allows users to edit their information or delete their
      <tr>
       <th>GET</th>
       <td><code>/</code></td>
-      <td>Pagina de incio</td>
+      <td>Home Page</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <th>GET</th>
       <td><code>/servicios</code></td>
-      <td>Pagina de servicios</td>
+      <td>Services</td>
       <td></td>
       <td></td>
     </tr>
      <tr>
       <th>GET</th>
       <td><code>/login</code></td>
-      <td>Formulario de inicio de session (render)</td>
+      <td>LogIn form(render)</td>
       <td></td>
       <td></td>
     </tr>
      <tr>
       <th>POST</th>
       <td><code>/login</code></td>
-      <td>Formulario de inicio de session (handler)</td>
+      <td>LogIn form (handler)</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <th>GET</th>
       <td><code>/signup</code></td>
-      <td>Pagina de registro (render)</td>
+      <td>Sign up form (render)</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <th>POST</th>
       <td><code>/signup</code></td>
-      <td>Pagina de registro (handler)</td>
+      <td>Sign up form (handler)</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <th>GET</th>
       <td><code>/listado-usuarios/</code></td>
-      <td>Vista de admin para gestion de cuentas</td>
+      <td>User list (Admin panel)</td>
       <td></td>
       <td>✔️</td>
     </tr>
     <tr>
       <th>GET</th>
       <td><code>/api/userlist</code></td>
-      <td>Lisatdo de cuidadores</td>
+      <td>Carers list</td>
       <td>✔️</td>
       <td></td>
     </tr>
     <tr>
       <th>GET</th>
       <td><code>/api/services</code></td>
-      <td>Lisatdo sitios de interes</td>
+      <td>Internal acces to places of interest</td>
       <td>✔️</td>
       <td></td>
     </tr>
@@ -117,49 +117,42 @@ Intuitive platform design allows users to edit their information or delete their
      <tr>
       <th>GET</th>
       <td><code>/cuidadores</code></td>
-      <td>Listado de cuidadores</td>
+      <td>Carers list</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <th>GET</th>
       <td><code>/cuidadores/:id</code></td>
-      <td>Detalles del perfil de cuidador</td>
+      <td>Profile details</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
     <th>GET</th>
       <td><code>/cuidadores/:id/reservar</code></td>
-      <td>Hacer una reserva de cuidador</td>
+      <td>Create booking</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
     <th>POST</th>
       <td><code>/cuidadores/:id/reservar</code></td>
-      <td>Hacer una reserva de cuidador</td>
+      <td>Create booking (handler)</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
     <th>GET</th>
       <td><code>/cuidadores/:id/comentar</code></td>
-      <td>Dejar el comentario (render)</td>
+      <td>Leave comment (render)</td>
       <td></td>
       <td>✔️</td>
     </tr>
     <tr>
     <th>POST</th>
       <td><code>/cuidadores/:id/comentar</code></td>
-      <td>Dejar el comentario (handler)</td>
-      <td></td>
-      <td>✔️</td>
-    </tr>
-        <tr>
-    <th>POST</th>
-      <td><code>/cuidadores/:id/valorar</code></td>
-      <td>Valorar el perfil (handler)</td>
+      <td>Leave comment (handler)</td>
       <td></td>
       <td>✔️</td>
     </tr>
@@ -186,70 +179,70 @@ Intuitive platform design allows users to edit their information or delete their
     <tr>
       <th>GET</th>
       <td><code>/perfil</code></td>
-      <td>Perfil de usuario (cuidador/cliente)</td>
+      <td>User profile</td>
       <td></td>
       <td>✔️</td>
     </tr>
     <tr>
       <th>GET</th>
       <td><code>/perfil/editar/:id</code></td>
-      <td>Editar perfil (render)</td>
+      <td>Edit profile (render)</td>
       <td></td>
       <td>✔️</td>
     </tr>
     <tr>
       <th>POST</th>
       <td><code>/perfil/editar/:id</code></td>
-      <td>Editar perfil (handler)</td>
+      <td>Edit profile (handler)</td>
       <td></td>
       <td>✔️</td>
     </tr>
     <tr>
       <th>POST</th>
       <td><code>/perfil/eliminar/:id</code></td>
-      <td>Eliminar perfil de usuario comno admin(handler)</td>
+      <td>Delete profile (handler)</td>
       <td></td>
       <td>✔️</td>
     </tr>
     <tr>
       <th>GET</th>
       <td><code>/perfil/:id/reservas</code></td>
-      <td>Listado de reservas</td>
+      <td>Booking list</td>
       <td></td>
       <td>✔️</td>
     </tr>
     <tr>
       <th>POST</th>
       <td><code>/perfil/reservas/eliminar/:id</code></td>
-      <td>Eliminar reserva (handler solo propietario)</td>
+      <td>Delete booking (handler)</td>
       <td></td>
       <td>✔️</td>
     </tr>
     <tr>
       <th>GET</th>
       <td><code>/perfil/reservas/edit/:id</code></td>
-      <td>Editar reserva (render)</td>
+      <td>Edit booking (render)</td>
       <td></td>
       <td>✔️</td>
     </tr>
     <tr>
       <th>POST</th>
       <td><code>/perfil/reservas/edit/:id</code></td>
-      <td>Editar reserva (handler)</td>
+      <td>Edit booking (handler)</td>
       <td></td>
       <td>✔️</td>
     </tr>
     <tr>
       <th>POST</th>
       <td><code>/perfil/reservas/acceptar/:id</code></td>
-      <td>Aceptar reserva (handler)</td>
+      <td>Accept booking (handler)</td>
       <td></td>
       <td>✔️</td>
     </tr>
     <tr>
       <th>POST</th>
       <td><code>/perfil/reservas/cancelar/:id</code></td>
-      <td>Cancelar reserva (handler)</td>
+      <td>Cancel booking (handler)</td>
       <td></td>
       <td>✔️</td>
     </tr>
